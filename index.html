@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Lemercier — BTS SIO SISR — Administration systèmes, réseaux &amp; sécurité</title>
+    <meta name="description" content="Portfolio de Lucas, étudiant BTS SIO option SISR : projets d'infrastructure réseau, sécurité et administration systèmes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="wrap">
+            <a class="brand" href="index.html">Lucas <span>Lemercier</span></a>
+
+            <nav class="main-nav" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Accueil</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="competences.html">Compétences</a></li>
+                    <li><a href="veille.html">Veille</a></li>
+                    <li><a href="parcours.html">Parcours BTS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="wrap">
+            <div>
+                <h1>J'installe, je sécurise et je maintiens des infrastructures réseau.</h1>
+
+                <p class="lede">
+                    Étudiant en BTS SIO, option SISR (systèmes, réseaux, sécurité).
+                    J'apprends en construisant de vraies infrastructures — pas seulement en les étudiant.
+                </p>
+
+                <div class="cta-row">
+                    <a class="btn primary" href="projets.html">Voir mes projets</a>
+                    <a class="btn" href="mailto:lucas.lemercier07@gmail.com">Me contacter</a>
+                    <a class="btn" href="[lien-cv.pdf]">Télécharger mon CV</a>
+                </div>
+            </div>
+
+            <figure class="topo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="100%">
+
+                    <!-- Style de texte et contours -->
+                    <g
+                        stroke="#1f4b5e"
+                        stroke-width="1.5"
+                        fill="none"
+                        text-anchor="middle"
+                        font-family="IBM Plex Mono, monospace"
+                        font-size="11"
+                    >
+
+                        <!-- 1. Internet -->
+                        <ellipse cx="180" cy="30" rx="45" ry="18"/>
+                        <text x="180" y="34" fill="#1f4b5e" stroke="none">Internet</text>
+
+                        <!-- Connecteur Internet -> pfSense -->
+                        <line x1="180" y1="48" x2="180" y2="65"/>
+
+                        <!-- 2. pfSense -->
+                        <rect x="140" y="65" width="80" height="30"/>
+                        <text x="180" y="84" fill="#1f4b5e" stroke="none">pfSense</text>
+
+                        <!-- Connecteur pfSense -> Routeur -->
+                        <line x1="180" y1="95" x2="180" y2="110"/>
+
+                        <!-- 3. Routeur -->
+                        <rect x="140" y="110" width="80" height="30"/>
+                        <text x="180" y="129" fill="#1f4b5e" stroke="none">Routeur</text>
+
+                        <!-- Connecteur Routeur -> Switch -->
+                        <line x1="180" y1="140" x2="180" y2="155"/>
+
+                        <!-- 4. Switch -->
+                        <rect x="140" y="155" width="80" height="30"/>
+                        <text x="180" y="174" fill="#1f4b5e" stroke="none">Switch</text>
+
+                        <!-- 5. Borne Wi-Fi -->
+                        <line x1="220" y1="170" x2="260" y2="170"/>
+                        <rect x="260" y="155" width="100" height="30"/>
+                        <text x="310" y="174" fill="#1f4b5e" stroke="none" font-size="10">
+                            Borne Wi-Fi
+                        </text>
+
+                        <!-- Lignes d'arborescence (Switch vers machines du bas) -->
+                        <line x1="180" y1="185" x2="180" y2="200"/>
+                        <line x1="65" y1="200" x2="295" y2="200"/>
+                        <line x1="65" y1="200" x2="65" y2="215"/>
+                        <line x1="180" y1="200" x2="180" y2="215"/>
+                        <line x1="295" y1="200" x2="295" y2="215"/>
+
+                        <!-- 6. Les 3 machines -->
+                        <!-- Machine 1 : Server Linux -->
+                        <rect x="10" y="215" width="110" height="30"/>
+                        <text x="65" y="234" fill="#1f4b5e" stroke="none" font-size="9.5">
+                            server linux
+                        </text>
+
+                        <!-- Machine 2 : Windows Server -->
+                        <rect x="125" y="215" width="110" height="30"/>
+                        <text x="180" y="234" fill="#1f4b5e" stroke="none" font-size="9.5">
+                            Windows Server
+                        </text>
+
+                        <!-- Machine 3 : Client -->
+                        <rect x="240" y="215" width="110" height="30"/>
+                        <text x="295" y="234" fill="#1f4b5e" stroke="none" font-size="9.5">
+                            Client
+                        </text>
+
+                    </g>
+                </svg>
+
+                <figcaption>
+                    Maquette réalisée en 2ᵉ année — 3 postes · 1 switch · 1 routeur ·
+                    1 borne Wi-Fi · pare-feu pfSense
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="apropos">
+        <div class="wrap">
+            <h2>En bref</h2>
+
+            <p class="section-intro">
+                Étudiant en 2ᵉ année de BTS SIO, option SISR (solutions d'infrastructure,
+                systèmes et réseaux). Je m'intéresse particulièrement à l'administration système,
+                à la sécurité des infrastructures et à la supervision — j'apprends surtout en
+                construisant de vraies maquettes réseau plutôt qu'en me limitant à la théorie.
+                Je suis actuellement ouvert aussi bien à une poursuite d'études en cybersécurité,
+                cloud ou DevOps qu'à une alternance en systèmes, réseaux ou sécurité.
+            </p>
+        </div>
+    </section>
+
+    <section id="projets-phares">
+        <div class="wrap">
+            <h2>Projets récents</h2>
+
+            <p class="section-intro">
+                Une sélection. Le détail de chaque situation — contexte, actions, résultat —
+                est sur la page Projets.
+            </p>
+
+            <div class="grid-3">
+
+                <div class="tile">
+                    <h3>Infrastructure réseau complète</h3>
+
+                    <p>
+                        4 postes, switch, routeur, borne Wi-Fi et pare-feu pfSense —
+                        conception et mise en service.
+                    </p>
+
+                    <a href="projets.html#infra-pfsense">
+                        Voir l'étude de cas →
+                    </a>
+                </div>
+
+                <div class="tile">
+                    <h3>Routage et NAT sous Cisco</h3>
+
+                    <p>
+                        Maquette réseau multi-sites : VLAN, routage inter-VLAN et NAT
+                        sur Packet Tracer.
+                    </p>
+
+                    <a href="projets.html#cisco-routage">
+                        Voir l'étude de cas →
+                    </a>
+                </div>
+
+                <div class="tile">
+                    <h3>Test d'intrusion (DoS)</h3>
+
+                    <p>
+                        Attaque par déni de service menée en environnement contrôlé
+                        et analyse des contre-mesures.
+                    </p>
+
+                    <a href="projets.html#test-dos">
+                        Voir l'étude de cas →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="competences-snapshot">
+        <div class="wrap">
+            <h2>Ce que je sais faire</h2>
+
+            <p class="section-intro">
+                Détail complet, avec preuves, sur la page Compétences.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Linux</span>
+                <span class="tag">Windows Server</span>
+                <span class="tag">VLAN / DHCP / DNS</span>
+                <span class="tag">pfSense</span>
+                <span class="tag">Cisco Packet Tracer</span>
+                <span class="tag">Python</span>
+                <span class="tag">Bash</span>
+                <span class="tag">VirtualBox</span>
+                <span class="tag">Sécurité réseau</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <span>© 2026 Lucas Lemercier</span>
+
+            <span>
+                <a href="mailto:lucas.lemercier07@gmail.com">
+                    lucas.lemercier07@gmail.com
+                </a>
+                ·
+                <a href="https://github.com/lucas-lemercier">
+                    GitHub
+                </a>
+                ·
+                <a href="https://www.linkedin.com/in/lucas-lemercier07">
+                    LinkedIn
+                </a>
+            </span>
+        </div>
+    </footer>
+
+</body>
+</html>

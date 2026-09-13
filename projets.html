@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — Lucas Lemercier</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html" aria-current="page">Projets</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="veille.html">Veille</a></li>
+        <li><a href="parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Projets</h2>
+    <p class="section-intro">Chaque projet est présenté sous la même forme : contexte, ce que j'ai fait, résultat. Les captures d'écran et schémas sont à ajouter dans les encadrés prévus.</p>
+  </div>
+</section>
+
+<!-- ===================== 1. Infra pfSense (2e année, en cours) ===================== -->
+<div class="wrap">
+<article class="case" id="infra-pfsense">
+  <div class="case-head">
+    <h3>Infrastructure réseau complète — pare-feu pfSense</h3>
+    <span class="case-status in-progress">● en cours — 2ᵉ année</span>
+  </div>
+  <div class="tags">
+    <span class="tag">pfSense</span>
+    <span class="tag">VLAN</span>
+    <span class="tag">GLPI</span>
+    <span class="tag">Active Directory</span>
+    <span class="tag">Supervision</span>
+    <span class="tag">VPN</span>
+  </div>
+
+  <div class="case-body">
+    <div class="case-block">
+      <h4>Contexte</h4>
+      <p>Atelier de professionnalisation démarré en tout début de 2ᵉ année, prévu pour occuper le reste de l'année scolaire. Ce n'est pas une simple maquette de test : le cahier des charges couvre une infrastructure complète avec service GLPI, serveur web sécurisé, gestion des logs, un Active Directory avec DHCP et DNS redondés sur serveur Windows, de la supervision, du cloud, un VPN et des sauvegardes.</p>
+      <h4 style="margin-top:20px;">Objectif</h4>
+      <p>Concevoir et mettre en service une infrastructure réseau réaliste : deux serveurs (Linux et Windows) virtualisés sur deux machines physiques, un switch, un routeur, une borne Wi-Fi et un pare-feu pfSense avec VLAN et règles de filtrage.</p>
+    </div>
+    <div class="case-block">
+      <h4>Ce que j'ai fait (à date)</h4>
+      <ul>
+        <li>Câblage physique de la maquette</li>
+        <li>Adressage IP et configuration des VLAN</li>
+        <li>Serveur Linux avec le service GLPI installé et fonctionnel</li>
+        <li>Configuration du pare-feu pfSense : règles de filtrage, VLAN</li>
+        <li>Configuration du routeur et du switch, routes IP</li>
+      </ul>
+      <h4 style="margin-top:20px;">Où j'en suis</h4>
+      <p>Le réseau a accès à Internet, le pare-feu est configuré (VLAN, routage), le câblage et les machines clientes sont en place. Prochaine étape : le serveur Windows (AD, DHCP, DNS redondés) — actuellement bloqué par un souci d'ISO à résoudre.</p>
+    </div>
+  </div>
+
+  <div class="proof-box">
+    Preuves à ajouter ici : schéma d'adressage IP et des VLAN, captures des règles pfSense, capture de GLPI en fonctionnement, photo du câblage physique.
+  </div>
+  <div class="todo">À mettre à jour au fil de l'année : avancement du serveur Windows (AD/DHCP/DNS), puis supervision, cloud, VPN et sauvegardes une fois réalisés.</div>
+</article>
+</div>
+
+<!-- ===================== 2. Cisco routage/NAT ===================== -->
+<div class="wrap">
+<article class="case" id="cisco-routage">
+  <div class="case-head">
+    <h3>Routage, NAT et commutation sous Cisco Packet Tracer</h3>
+    <span class="case-status done">● terminé</span>
+  </div>
+  <div class="tags">
+    <span class="tag">Cisco Packet Tracer</span>
+    <span class="tag">Routage</span>
+    <span class="tag">NAT</span>
+    <span class="tag">Switching</span>
+  </div>
+
+  <div class="case-body">
+    <div class="case-block">
+      <h4>Contexte</h4>
+      <p>Atelier réalisé en 1ère année, sur Cisco Packet Tracer.</p>
+      <h4 style="margin-top:20px;">Objectif</h4>
+      <p>Construire plusieurs réseaux distincts, interconnectés par différents routeurs et switchs, capables de communiquer entre eux — avec attribution dynamique des adresses IP.</p>
+    </div>
+    <div class="case-block">
+      <h4>Ce que j'ai fait</h4>
+      <ul>
+        <li>Conception de la topologie multi-réseaux (routeurs + switchs)</li>
+        <li>Configuration du routage dynamique entre les réseaux</li>
+        <li>Mise en place du DHCP pour l'attribution automatique des adresses IP</li>
+        <li>Tests de communication entre les différents réseaux</li>
+      </ul>
+      <h4 style="margin-top:20px;">Résultat</h4>
+      <p>Tout fonctionnait comme prévu : les différents réseaux communiquaient correctement entre eux via le routage dynamique.</p>
+    </div>
+  </div>
+
+  <div class="proof-box">
+    Preuves à ajouter ici : capture de la topologie Packet Tracer, extraits de configuration (show ip route, show run).
+  </div>
+  <div class="todo">Ajoute si possible une capture de la topologie complète et le protocole de routage dynamique utilisé (RIP, OSPF...) si tu t'en souviens.</div>
+</article>
+</div>
+
+<!-- ===================== 3. Site web ===================== -->
+<div class="wrap">
+<article class="case" id="site-web">
+  <div class="case-head">
+    <h3>Développement d'un site web</h3>
+    <span class="case-status done">● terminé</span>
+  </div>
+  <div class="tags">
+    <span class="tag">HTML / CSS</span>
+  </div>
+
+  <div class="case-body">
+    <div class="case-block">
+      <h4>Contexte</h4>
+      <p>Projet d'école réalisé en tout début de 1ère année.</p>
+      <h4 style="margin-top:20px;">Objectif</h4>
+      <p>[À préciser si tu t'en souviens : quel était le sujet/besoin du site ?]</p>
+    </div>
+    <div class="case-block">
+      <h4>Ce que j'ai fait</h4>
+      <ul>
+        <li>Structure et mise en page du site en HTML/CSS</li>
+      </ul>
+      <h4 style="margin-top:20px;">Résultat</h4>
+      <p>Le site n'est pas hébergé en ligne — le code est conservé en local. Voir l'encadré ci-dessous pour le mettre en valeur simplement dans le portfolio.</p>
+    </div>
+  </div>
+
+  <div class="proof-box">
+    Pour montrer ce projet sans l'héberger : prends 2-3 captures d'écran des pages (accueil, une page secondaire) et ajoute-les ici. Encore mieux — puisque tu as déjà GitHub pour ce portfolio, tu peux créer un second petit dépôt avec juste ce code et activer GitHub Pages dessus de la même façon : ça te donne un lien réel à mettre à la place de "en local".
+  </div>
+  <div class="todo">Ajoute le sujet exact du site si tu t'en souviens, et idéalement des captures d'écran ou un lien GitHub Pages.</div>
+</article>
+</div>
+
+<!-- ===================== 4. DoS ===================== -->
+<div class="wrap">
+<article class="case" id="test-dos">
+  <div class="case-head">
+    <h3>Test d'intrusion : attaque par déni de service</h3>
+    <span class="case-status done">● terminé</span>
+  </div>
+  <div class="tags">
+    <span class="tag">Cybersécurité</span>
+    <span class="tag">Exercice encadré</span>
+    <span class="tag">UFW</span>
+    <span class="tag">Défense réseau</span>
+  </div>
+
+  <div class="case-body">
+    <div class="case-block">
+      <h4>Contexte</h4>
+      <p>Exercice réalisé dans le cadre de la formation, en binôme avec un camarade : chacun devait mener un test de déni de service contre le site web de l'autre, dans un environnement encadré, puis mettre en place les défenses correspondantes.</p>
+      <h4 style="margin-top:20px;">Objectif</h4>
+      <p>Comprendre concrètement le fonctionnement d'une attaque par déni de service contre un site web, afin de mieux savoir ensuite comment s'en protéger côté administration système/réseau.</p>
+    </div>
+    <div class="case-block">
+      <h4>Ce que j'ai fait</h4>
+      <ul>
+        <li>Réalisation du test de déni de service sur le site cible dans le cadre de l'exercice encadré</li>
+        <li>Observation de l'impact sur la disponibilité du service</li>
+        <li>Mise en place de la défense sur mon propre serveur : limitation du débit et règles de pare-feu via UFW</li>
+      </ul>
+      <h4 style="margin-top:20px;">Résultat / analyse</h4>
+      <p>L'exercice a permis de constater concrètement l'effet d'une attaque par épuisement de connexions sur un serveur web, puis de valider les contre-mesures mises en place (limitation de débit, filtrage UFW) pour restaurer la disponibilité du service.</p>
+    </div>
+  </div>
+
+  <div class="proof-box">
+    Preuves à ajouter ici : captures des règles UFW mises en place, éventuellement un graphique de charge avant/après.
+  </div>
+  <div class="todo">Précise si tu veux le nom exact de l'outil utilisé en public (Slowloris) — c'est un outil connu et pédagogique, ça ne pose pas de problème de le citer dans un cadre scolaire encadré comme celui-ci.</div>
+</article>
+</div>
+
+<!-- ===================== 5. Stage 1ère année ===================== -->
+<div class="wrap">
+<article class="case" id="stage-1ere-annee">
+  <div class="case-head">
+    <h3>Stage de 1ère année</h3>
+    <span class="case-status done">● terminé</span>
+  </div>
+  <div class="tags">
+    <span class="tag">Entreprise de services numériques</span>
+    <span class="tag">Développement web</span>
+  </div>
+
+  <div class="case-body">
+    <div class="case-block">
+      <h4>Contexte</h4>
+      <p>Stage de 6 semaines (18 mai – 28 juin 2026) effectué au sein d'une entreprise de services numériques proposant, entre autres, des prestations de création de sites web. J'y occupais un rôle d'assistant développeur.</p>
+      <h4 style="margin-top:20px;">Missions principales</h4>
+      <p>Développement et maintenance de site web : évolutions fonctionnelles, gestion de plugins, correctifs.</p>
+    </div>
+    <div class="case-block">
+      <h4>Ce que j'ai fait</h4>
+      <ul>
+        <li>Suivi et application de correctifs sur des sites existants</li>
+        <li>Gestion et mise à jour de plugins</li>
+        <li>Participation à de petites évolutions fonctionnelles sur des projets en cours</li>
+      </ul>
+      <h4 style="margin-top:20px;">Bilan</h4>
+      <p>Ce stage m'a surtout permis de découvrir le fonctionnement concret d'une équipe de développement web en entreprise : la logique de maintenance d'un site déjà en production, la gestion des priorités entre correctifs et évolutions, et les contraintes propres à un environnement client. Un stage davantage porté sur l'assistance que sur des réalisations autonomes, mais une première immersion utile en entreprise.</p>
+    </div>
+  </div>
+
+  <div class="proof-box">
+    Preuves à ajouter ici : attestation de stage (sans besoin de nommer l'entreprise si tu préfères rester discret sur ce point).
+  </div>
+  <div class="todo">Si tu changes d'avis, tu peux ajouter le nom de l'entreprise plus tard sans rien casser — la formulation "entreprise de services numériques" reste valable soit avec, soit sans nom cité juste à côté.</div>
+</article>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
