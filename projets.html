@@ -120,34 +120,43 @@
 <div class="wrap">
 <article class="case" id="site-web">
   <div class="case-head">
-    <h3>Développement d'un site web</h3>
+    <h3>AccessAuto — site e-commerce d'accessoires auto</h3>
     <span class="case-status done">● terminé</span>
   </div>
   <div class="tags">
-    <span class="tag">HTML / CSS</span>
+    <span class="tag">HTML sémantique</span>
+    <span class="tag">CSS (design system)</span>
+    <span class="tag">JavaScript</span>
+    <span class="tag">Accessibilité</span>
   </div>
 
   <div class="case-body">
     <div class="case-block">
       <h4>Contexte</h4>
-      <p>Projet d'école réalisé en tout début de 1ère année.</p>
+      <p>Projet d'école réalisé en tout début de 1ère année : concevoir le site vitrine et e-commerce d'une entreprise fictive de vente d'accessoires auto (AccessAuto), du catalogue jusqu'à la commande.</p>
       <h4 style="margin-top:20px;">Objectif</h4>
-      <p>[À préciser si tu t'en souviens : quel était le sujet/besoin du site ?]</p>
+      <p>Un site à 6 pages entièrement statique (sans framework, sans backend) : accueil, catalogue, formulaire de commande, page de confirmation, contact et présentation de l'entreprise.</p>
     </div>
     <div class="case-block">
       <h4>Ce que j'ai fait</h4>
       <ul>
-        <li>Structure et mise en page du site en HTML/CSS</li>
+        <li>Structure HTML sémantique et accessible : lien d'évitement, <code>fieldset</code>/<code>legend</code> sur les formulaires, attributs <code>aria-expanded</code> sur le menu mobile</li>
+        <li>Système de design CSS cohérent (couleurs, typographie, composants réutilisables sur les 6 pages)</li>
+        <li>JavaScript : calcul du total du panier en temps réel sur le formulaire de commande</li>
+        <li>JavaScript : reconstruction du récapitulatif de commande sur la page de confirmation à partir des paramètres transmis</li>
+        <li>Menu de navigation adaptatif (mobile/desktop)</li>
       </ul>
       <h4 style="margin-top:20px;">Résultat</h4>
-      <p>Le site n'est pas hébergé en ligne — le code est conservé en local. Voir l'encadré ci-dessous pour le mettre en valeur simplement dans le portfolio.</p>
+      <p>Un site fonctionnel de bout en bout, démontrant une base HTML/CSS/JS solide sans dépendance à un framework. Point à améliorer identifié : le formulaire de commande transmet les données en GET (visibles dans l'URL) — un choix qui conviendrait pour une démo mais qu'il faudrait passer en POST avec un vrai traitement serveur en production.</p>
     </div>
   </div>
 
-  <div class="proof-box">
-    Pour montrer ce projet sans l'héberger : prends 2-3 captures d'écran des pages (accueil, une page secondaire) et ajoute-les ici. Encore mieux — puisque tu as déjà GitHub pour ce portfolio, tu peux créer un second petit dépôt avec juste ce code et activer GitHub Pages dessus de la même façon : ça te donne un lien réel à mettre à la place de "en local".
+  <div class="cta-row" style="margin-bottom:14px;">
+    <a class="btn primary" href="https://lucas-lemercier.github.io/accessauto/" target="_blank" rel="noopener">Voir le site en ligne →</a>
   </div>
-  <div class="todo">Ajoute le sujet exact du site si tu t'en souviens, et idéalement des captures d'écran ou un lien GitHub Pages.</div>
+  <div class="proof-box">
+    Site déployé : <a href="https://lucas-lemercier.github.io/accessauto/" target="_blank" rel="noopener">lucas-lemercier.github.io/accessauto</a>. Captures d'écran à ajouter ici (accueil, catalogue, formulaire avec le total qui se met à jour).
+  </div>
 </article>
 </div>
 
