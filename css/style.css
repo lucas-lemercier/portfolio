@@ -1,5 +1,5 @@
 /* =========================================================
-   Portfolio — Lucas — BTS SIO SISR
+   Portfolio — Lucas 
    Design: schéma technique / topologie réseau.
    Fond clair "papier", accent bleu technique, annotations mono.
    ========================================================= */
@@ -420,7 +420,7 @@ footer a { color: var(--ink-soft); }
 
 /* ---------- Jury banner (parcours.html) ---------- */
 
-.jury-note {
+.jury-note, .note-box {
   background: var(--surface);
   border-left: 3px solid var(--accent);
   padding: 16px 20px;
@@ -428,3 +428,62 @@ footer a { color: var(--ink-soft); }
   color: var(--ink-soft);
   margin-bottom: 32px;
 }
+
+/* ---------- Veille — fiches détaillées ---------- */
+
+.veille-article h1 {
+  font-family: var(--font-head);
+  font-size: 1.7rem;
+  line-height: 1.28;
+  margin: 6px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.veille-article h2 {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  margin: 36px 0 12px;
+}
+
+.veille-article p, .veille-article li { font-size: 0.97rem; }
+
+.veille-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 6px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 4px 0 32px;
+}
+
+.veille-meta strong { color: var(--ink); font-weight: 500; }
+
+.analyse-perso {
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin: 0;
+}
+
+.source-line {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.retour-veille {
+  display: inline-block;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+.retour-veille:hover { text-decoration: underline; }
