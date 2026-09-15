@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Cyberattaque ministère de la Transition écologique — Lucas Lemercier</title>
+<meta name="description" content="Une cyberattaque exploitant une faille IDOR paralyse plusieurs portails du ministère de la Transition écologique et expose les données de 22 800 utilisateurs.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Cybersécurité</span>
+      <span class="tag">Secteur public français</span>
+      <span class="tag">Contrôle d'accès</span>
+    </div>
+
+    <h1>Cyberattaque contre le ministère de la Transition écologique : 22 800 utilisateurs concernés</h1>
+
+    <div class="veille-meta">
+      <div>Incident : <strong>Début septembre 2026</strong></div>
+      <div>Rédaction : <strong>15 septembre 2026</strong></div>
+      <div>Source : <strong>LeMagIT</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Début septembre 2026, le ministère de la Transition écologique a subi une cyberattaque ayant paralysé plusieurs de ses services numériques, dont le site de consultations publiques environnementales, qui affichait des messages de maintenance aux usagers. L'attaque a visé les outils de messagerie et les sites web du ministère.
+    </p>
+    <p>
+      Selon le cybercriminel à l'origine de la revendication, deux faiblesses techniques ont été exploitées conjointement : une mauvaise configuration d'un service d'authentification, puis une faille de type IDOR (Insecure Direct Object Reference) — un défaut qui permet d'accéder aux données d'un autre utilisateur en modifiant simplement un identifiant dans une requête, faute de vérification correcte des droits côté serveur. À ce stade, aucune vérification technique indépendante ne confirme ce scénario précis.
+    </p>
+
+    <h2>Chronologie</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Début sept.</div>
+        <h4>Détection</h4>
+        <p>Plusieurs portails gouvernementaux deviennent inaccessibles, affichant des messages de maintenance ; les outils de messagerie du ministère sont également touchés.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Investigation</div>
+        <h4>Mobilisation</h4>
+        <p>L'ANSSI est mobilisée pour analyser l'étendue de la compromission ; le ministère signale officiellement l'attaque au parquet.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Effets en cascade</div>
+        <h4>Impact local</h4>
+        <p>Des directions départementales, comme en Creuse, rencontrent des difficultés de communication (notamment par e-mail), preuve que l'impact dépasse les seuls services centraux.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      Exfiltration revendiquée de bases de données concernant environ 22 800 utilisateurs (sans confirmation technique indépendante à ce stade). Interruption de services publics numériques, avec des répercussions jusque dans des directions départementales. L'incident a fait l'objet d'une large couverture médiatique en France.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Vérifier systématiquement les droits d'accès côté serveur pour chaque ressource demandée, sans se fier à un identifiant transmis par le client (protection contre l'IDOR)</li>
+      <li>Auditer régulièrement la configuration des API exposées publiquement (authentification, limitation de débit, validation des entrées)</li>
+      <li>Mettre en place une supervision capable de détecter des schémas d'accès anormaux (énumération d'identifiants, volume de requêtes inhabituel)</li>
+      <li>Prévoir un plan de communication de secours pour les services internes en cas d'indisponibilité de la messagerie principale</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Contrôle des accès et autorisations</span>
+      <span class="tag">Supervision et détection</span>
+      <span class="tag">Continuité de service</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce qui ressort surtout de ce cas, c'est la simplicité relative de la faille en cause : pas de zero-day, juste un défaut de contrôle d'accès (IDOR) qu'on peut concrètement identifier et corriger dès la conception d'une application. Qu'un service aussi sensible qu'un ministère puisse être mis en difficulté par une erreur de configuration aussi basique, ça remet les choses en perspective : les vérifications d'autorisation ne sont jamais un détail qu'on peut se permettre de bâcler, même sur un "petit" endpoint.
+    </p>
+
+    <div class="source-line">
+      Source : <a href="https://www.lemagit.fr/actualites/366649720/Cyberhebdo-du-4-septembre-2026-cyberattaque-contre-le-Ministere-de-la-Transition-ecologique" target="_blank" rel="noopener">LeMagIT — « Cyberhebdo du 4 septembre 2026 : cyberattaque contre le ministère de la Transition écologique », 4 septembre 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
