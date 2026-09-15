@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Cyberattaque Boston Scientific — Lucas Lemercier</title>
+<meta name="description" content="Une cyberattaque paralyse la production de Boston Scientific, mais son cloud reste protégé grâce à la segmentation.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Cybersécurité</span>
+      <span class="tag">Segmentation réseau</span>
+      <span class="tag">Secteur médical</span>
+    </div>
+
+    <h1>Boston Scientific paralysé par une cyberattaque — le cloud épargné grâce à la segmentation</h1>
+
+    <div class="veille-meta">
+      <div>Incident : <strong>25 août 2026</strong></div>
+      <div>Rédaction : <strong>14 septembre 2026</strong></div>
+      <div>Source : <strong>TechCrunch</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Boston Scientific, fabricant américain de dispositifs médicaux (pacemakers, défibrillateurs) présent dans 127 pays, a détecté une cyberattaque le 25 août 2026. L'incident a provoqué une panne touchant plusieurs systèmes internes et applications métier ; l'entreprise a fait appel à CrowdStrike pour investiguer et contenir l'attaque.
+    </p>
+    <p>
+      Le point intéressant de cet incident : il est resté cantonné aux systèmes sur site. Les applications hébergées dans le cloud de l'entreprise n'ont pas été touchées — une conséquence directe du fait que les accès cloud sont isolés des systèmes internes classiques.
+    </p>
+
+    <h2>Chronologie</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">25 août</div>
+        <h4>Détection</h4>
+        <p>L'entreprise détecte des perturbations d'accès à ses systèmes IT et applications métier.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">25–30 août</div>
+        <h4>Confinement</h4>
+        <p>Fabrication, traitement des commandes et expéditions sont interrompus ; les équipes isolent les systèmes on-premises affectés.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">30 août</div>
+        <h4>Point de situation</h4>
+        <p>Boston Scientific confirme n'avoir observé aucune activité malveillante depuis le 25 août ; le cloud reste indemne.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Après le 30 août</div>
+        <h4>Reprise</h4>
+        <p>Fabrication, traitement des commandes et expéditions reviennent progressivement à la normale.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      Interruption mondiale de la fabrication et des expéditions pendant plusieurs jours, pour une entreprise dont les produits concernent plus de 48 millions de patients par an. Certaines activations de moniteurs cardiaques à distance ont été retardées, sans impact sur les dispositifs déjà implantés. Aucun vol de données ni ransomware confirmé publiquement à ce stade.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Isoler l'infrastructure d'identité et d'accès du cloud de celle de l'Active Directory / des systèmes internes classiques</li>
+      <li>Prévoir des procédures de traitement de commandes en mode dégradé, indépendantes du système central</li>
+      <li>Isoler logiquement les systèmes de fabrication (OT) des systèmes de gestion (ERP)</li>
+      <li>Préparer à l'avance un plan de communication réglementaire (formulaire 8-K, clients, patients)</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Segmentation cloud/on-premise</span>
+      <span class="tag">Gestion des identités et des accès</span>
+      <span class="tag">Continuité d'activité</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      C'est un bon exemple concret de ce qu'on nous répète en cours sur la segmentation réseau : ici, séparer les identités cloud du reste a vraiment limité la casse. Sans cette séparation, l'incident aurait probablement touché toute l'infrastructure au lieu de rester cantonné aux systèmes internes. Ça me rappelle directement notre atelier d'infrastructure, où on sépare les VLAN et les zones de confiance — même logique, juste à l'échelle d'une multinationale plutôt que d'une salle de TP.
+    </p>
+
+    <div class="source-line">
+      Source : <a href="https://techcrunch.com/2026/08/26/medical-device-maker-boston-scientific-says-a-cyberattack-is-causing-a-global-disruption-to-its-operations/" target="_blank" rel="noopener">TechCrunch — « Medical device maker Boston Scientific says a cyberattack is causing a 'global disruption' to its operations », 26 août 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

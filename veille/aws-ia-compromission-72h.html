@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Compromission AWS assistée par IA — Lucas Lemercier</title>
+<meta name="description" content="Un attaquant assisté par IA prend le contrôle d'un environnement AWS complet en 72 heures.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Cybersécurité</span>
+      <span class="tag">Cloud / AWS</span>
+      <span class="tag">Gestion des identités</span>
+    </div>
+
+    <h1>Un attaquant assisté par IA prend le contrôle d'un environnement AWS complet en 72 heures</h1>
+
+    <div class="veille-meta">
+      <div>Incident : <strong>7–10 juillet 2026</strong></div>
+      <div>Rédaction : <strong>14 septembre 2026</strong></div>
+      <div>Source : <strong>GBHackers, via l'enquête Sygnia</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Début juillet 2026, l'équipe de sécurité cloud Sygnia a documenté l'intrusion d'un attaquant dans un environnement AWS. Le point de départ est banal : une application exposée sur internet a laissé fuiter une clé d'accès. Ce qui distingue cet incident, c'est la vitesse atteinte ensuite — un contrôle étendu de l'infrastructure en environ 72 heures — grâce à des outils d'IA utilisés pour accélérer la reconnaissance et les déplacements entre services.
+    </p>
+    <p>
+      Aucune faille zero-day n'a été nécessaire : uniquement des techniques déjà connues, mais exécutées à une cadence largement supérieure à ce qu'un attaquant humain seul peut produire.
+    </p>
+
+    <h2>Chronologie de l'attaque</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Étape 1</div>
+        <h4>Accès initial</h4>
+        <p>Fuite d'une clé d'accès AWS via une application exposée sur internet.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 2</div>
+        <h4>Reconnaissance accélérée par IA</h4>
+        <p>Énumération rapide des services, identités et permissions pour repérer les rôles trop larges et les mauvaises configurations.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 3</div>
+        <h4>Collecte de secrets et rebonds</h4>
+        <p>Récupération d'identifiants dans des variables d'environnement, des buckets S3 et Secrets Manager, utilisés pour rebondir vers ECS, EC2, RDS et les dépôts de code.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 4</div>
+        <h4>Persistance</h4>
+        <p>Création de nouveaux utilisateurs et clés IAM, dépôt de shells inversés, modification discrète de fichiers de déploiement.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 5</div>
+        <h4>Démonstration de contrôle</h4>
+        <p>Désactivation de l'accès à des buckets S3 et de services ECS pour appuyer une tentative d'extorsion.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      Accès administrateur étendu sur plusieurs services cloud, extraction de données via des requêtes ciblées sur des bases RDS, et démonstration de capacité de disruption à des fins d'extorsion. L'attaque a touché simultanément l'infrastructure (EC2/ECS), le stockage (S3), les données (RDS) et la chaîne de livraison logicielle (CI/CD).
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Éliminer les clés d'accès statiques côté applicatif ; privilégier des rôles IAM temporaires</li>
+      <li>Appliquer le principe du moindre privilège sur les rôles et permissions IAM</li>
+      <li>Centraliser et faire tourner régulièrement les secrets (Secrets Manager, Parameter Store)</li>
+      <li>Détecter les activités automatisées massives (usage parallèle de clés depuis une même origine)</li>
+      <li>Durcir la chaîne CI/CD : revue des commits, protection des branches, scan de secrets avant merge</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Sécurisation des accès et identités</span>
+      <span class="tag">Administration cloud</span>
+      <span class="tag">Gestion des secrets</span>
+      <span class="tag">Supervision / détection</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce qui m'a surpris en lisant ça, c'est qu'il n'y a aucune faille inédite là-dedans — juste une clé mal protégée et des permissions trop larges, des erreurs de configuration assez classiques. Ce que l'IA change, c'est la vitesse : ce qui aurait pris des semaines à un attaquant seul a été fait en trois jours. Pour un futur admin SISR, ça remet en question l'idée qu'on peut se reposer sur des contrôles manuels de temps en temps — il faut de la détection automatisée qui suit le même rythme que l'attaque.
+    </p>
+
+    <div class="source-line">
+      Source : <a href="https://gbhackers.com/ai-assisted-hackers-compromise-aws-cloud-in-72-hours/" target="_blank" rel="noopener">GBHackers Security — « AI-Assisted Hackers Compromise AWS Cloud in 72 Hours Using Stolen Credentials », 10 juillet 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Fuite cloud.numerique.gouv.fr — Lucas Lemercier</title>
+<meta name="description" content="Un cybercriminel publie des données issues de la plateforme cloud de l'État français.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Cybersécurité</span>
+      <span class="tag">Cloud</span>
+      <span class="tag">Secteur public français</span>
+    </div>
+
+    <h1>Des données du cloud de l'État français publiées sur un forum cybercriminel</h1>
+
+    <div class="veille-meta">
+      <div>Publication : <strong>22 août 2026</strong></div>
+      <div>Rédaction : <strong>14 septembre 2026</strong></div>
+      <div>Source : <strong>cyberattaque.org</strong></div>
+      <div>Criticité : <strong>Moyenne à élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Le 22 août 2026, un individu utilisant le pseudonyme 0xSec a publié sur un forum cybercriminel un ensemble de données présentées comme provenant de cloud.numerique.gouv.fr, une plateforme rattachée à la Direction interministérielle du numérique (DINUM), qui pilote la stratégie « Cloud au centre » de l'État français.
+    </p>
+    <p>
+      La publication contenait une douzaine de fichiers CSV totalisant environ 31 500 lignes : administrations, fournisseurs, projets numériques, formations, événements, et même des données liées à des programmes d'IA. Certains fichiers comprenaient aussi des métadonnées techniques, des commentaires internes et des adresses e-mail de contributeurs.
+    </p>
+
+    <h2>Chronologie</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Début août</div>
+        <h4>Contexte</h4>
+        <p>L'éditeur de l'outil Metabase révèle une faille zero-day critique d'injection SQL, activement exploitée pour compromettre des instances connectées à diverses bases de données.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">22 août</div>
+        <h4>Publication</h4>
+        <p>0xSec publie les fichiers liés à cloud.numerique.gouv.fr sur un forum cybercriminel. Aucun lien direct avec la faille Metabase n'est établi à ce stade, mais le précédent alimente les interrogations sur l'origine de la fuite.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      Exposition de données administratives et techniques liées à la gestion du cloud de l'État (fournisseurs, projets, contributeurs), avec un risque de réutilisation pour des attaques ciblées (ingénierie sociale, phishing visant agents publics ou prestataires). Cet épisode s'inscrit dans une vague plus large de fuites touchant l'administration française durant l'été 2026 (Éducation nationale, DGFiP).
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Cloisonner strictement les environnements de données selon leur sensibilité, même au sein d'une même plateforme cloud</li>
+      <li>Auditer régulièrement les accès et les exports vers des outils tiers (type Metabase) connectés aux bases sensibles</li>
+      <li>Mettre en place une authentification forte (MFA) systématique pour les comptes administratifs et les prestataires</li>
+      <li>Sensibiliser agents et sous-traitants aux risques de phishing ciblé après une fuite de ce type</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Sécurisation des accès cloud</span>
+      <span class="tag">Cloisonnement des données</span>
+      <span class="tag">Gestion des sous-traitants</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Le détail qui m'intéresse ici, c'est que ce n'est pas le cœur du cloud de l'État qui a été touché, mais des données périphériques — métadonnées, contacts, projets. Sur le papier ça paraît moins grave, mais c'est justement ce genre de données qui rend un phishing ciblé beaucoup plus crédible. En administration système, on a vite tendance à ne "verrouiller" que ce qui semble sensible à première vue, alors qu'un outil annexe mal protégé (ici potentiellement Metabase) peut devenir le vrai point d'entrée.
+    </p>
+
+    <div class="source-line">
+      Source : <a href="https://www.cyberattaque.org/dinum-31-544-lignes-liees-au-cloud-de-letat-en-fuite/" target="_blank" rel="noopener">cyberattaque.org — « DINUM : 31 544 lignes liées au cloud de l'État en fuite », 22 août 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
