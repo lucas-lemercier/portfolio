@@ -1,5 +1,5 @@
 /* =========================================================
-   Portfolio — Lucas 
+   Portfolio — Lucas — BTS SIO
    Design: schéma technique / topologie réseau.
    Fond clair "papier", accent bleu technique, annotations mono.
    ========================================================= */
@@ -405,6 +405,24 @@ table.skills a { font-family: var(--font-mono); font-size: 0.82rem; }
 .tl-item .tl-year { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-strong); }
 .tl-item h4 { font-family: var(--font-head); margin: 4px 0 6px; font-size: 1.05rem; }
 .tl-item p { margin: 0; color: var(--ink-soft); }
+
+/* ---------- Procédures — captures d'écran ---------- */
+
+.proc-figure {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 12px;
+  margin: 20px 0 28px;
+}
+
+.proc-figure img { width: 100%; border: 1px solid var(--line); }
+
+.proc-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
 
 /* ---------- Footer ---------- */
 
