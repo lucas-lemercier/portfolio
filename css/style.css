@@ -1,5 +1,5 @@
 /* =========================================================
-   Portfolio — Lucas 
+   Portfolio — Lucas
    Design: schéma technique / topologie réseau.
    Fond clair "papier", accent bleu technique, annotations mono.
    ========================================================= */
@@ -377,6 +377,34 @@ table.skills a { font-family: var(--font-mono); font-size: 0.82rem; }
 .veille-card h3 { font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 6px; }
 .veille-card p { color: var(--ink-soft); margin: 0; max-width: 55ch; }
 .veille-card .link { align-self: center; font-family: var(--font-mono); font-size: 0.85rem; white-space: nowrap; }
+
+/* ---------- Procedure cards (hub procedures.html) ---------- */
+
+.procedure-card {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.procedure-card .meta { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); margin-bottom: 6px; }
+.procedure-card h3 { font-family: var(--font-head); font-size: 1.1rem; margin: 0 0 6px; }
+.procedure-card p { color: var(--ink-soft); margin: 0; max-width: 55ch; }
+.procedure-card .link {
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+}
+.procedure-card .link:hover,
+.procedure-card .link:focus-visible { border-bottom-color: var(--accent-strong); text-decoration: underline; }
 
 /* ---------- Timeline (parcours) ---------- */
 
