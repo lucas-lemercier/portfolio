@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Teams vishing et ransomware Chaos — Lucas Lemercier</title>
+<meta name="description" content="Sophos documente une campagne où de faux support IT contactent des employés via Microsoft Teams, prennent le contrôle du poste à distance et déploient le ransomware Chaos.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">Vishing</span>
+      <span class="tag">Microsoft Teams</span>
+      <span class="tag">Ransomware</span>
+    </div>
+
+    <h1>Teams : de faux « support IT » prennent la main sur les postes et déploient le ransomware Chaos</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Février à juin 2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>Sophos (campagne STAC4749), relayé par BleepingComputer le 30 juillet 2026</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Entre février et juin 2026, Sophos a observé une campagne baptisée STAC4749 contre des dizaines d'organisations, presque toutes en Amérique du Nord. Les attaquants contactent un employé par chat ou appel Teams en se faisant passer pour le support informatique, puis le convainquent de lancer Quick Assist ou d'installer un outil de prise en main à distance.
+    </p>
+    <p>
+      Une fois la session ouverte, ils déploient une porte dérobée et se déplacent dans le réseau. Au moins trois compromissions ont abouti au ransomware Chaos, dans un cas en moins de 17 heures entre l'accès initial et le chiffrement. BleepingComputer a relayé l'étude le 30 juillet 2026.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      Ici, aucun mot de passe n'est craqué ni aucun MFA contourné : c'est la confiance accordée à l'identité du « support IT » qui est détournée. L'attaquant n'a pas à s'authentifier, c'est l'utilisateur qui lui ouvre une session déjà authentifiée sur son poste. Cela illustre que l'authentification forte ne protège pas contre une personne qui accepte volontairement d'ouvrir l'accès.
+    </p>
+
+    <h2>Déroulé de l'attaque</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Étape 1</div>
+        <h4>Contact via Teams</h4>
+        <p>Chat ou appel d'un compte externe se présentant comme le helpdesk. Les appels durent de 90 secondes à plus de 20 minutes, la plupart autour de 2 à 2,5 minutes. Les attaquants utilisent des domaines en .top à thème informatique, là où ils créaient auparavant leurs propres tenants onmicrosoft.com.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 2</div>
+        <h4>Prise en main à distance</h4>
+        <p>La victime lance Quick Assist ; en cas de blocage, un outil de gestion à distance (RemSupp) est installé. Sophos note que RemSupp est préféré depuis avril, probablement parce qu'il figure moins souvent sur les listes de blocage.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 3</div>
+        <h4>Implantation et persistance</h4>
+        <p>PowerShell télécharge des charges dans AppData, une porte dérobée s'installe et se fait passer pour un composant audio Realtek ou Windows grâce à des clés de registre Run.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 4</div>
+        <h4>Déplacement dans le réseau</h4>
+        <p>Activation du bureau à distance (RDP) et installation d'accès de secours (DWAgent, AnyDesk) pour garder la main si la première session est coupée.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 5</div>
+        <h4>Chiffrement</h4>
+        <p>Chiffrement quasi simultané des postes compromis et note de rançon « readme.chaos.txt ». Une exfiltration préalable est jugée « probable » dans au moins un cas.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Observé par Sophos :</strong> des dizaines d'organisations ciblées entre février et juin 2026 ; au moins trois cas de ransomware Chaos ; un délai minimal de moins de 17 heures ; près de 95 % des cas au Canada (50 %) et aux États-Unis (44 %) ; services, industrie, énergie et construction parmi les secteurs les plus touchés. <strong>Évaluations de Sophos :</strong> motivation financière avec un niveau de confiance élevé ; aucune preuve suffisante pour attribuer la campagne à un groupe précis. Le nombre exact d'organisations n'est pas publié.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Restreindre la communication externe dans Teams (liste blanche de domaines autorisés) et signaler les appels ou chats d'inconnus qui se présentent comme le support</li>
+      <li>Définir une procédure claire : le support ne demande jamais de lancer un outil de prise en main en dehors d'un ticket, et l'utilisateur rappelle un numéro connu en cas de doute</li>
+      <li>Bloquer ou contrôler Quick Assist et les outils de gestion à distance non autorisés avec un contrôle d'application</li>
+      <li>Déployer un EDR pour détecter les exécutions PowerShell anormales et l'usage non autorisé d'outils d'administration à distance</li>
+      <li>Auditer régulièrement les clés Run et autres mécanismes de persistance, et former les utilisateurs à reconnaître ce type d'appel</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Sécurisation des postes de travail</span>
+      <span class="tag">Gestion des identités et des accès</span>
+      <span class="tag">Supervision et détection d'incidents</span>
+      <span class="tag">Sensibilisation des utilisateurs</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce cas m'a fait relativiser l'idée qu'une bonne authentification suffit. Ici, tout se joue avant : l'employé croit parler au support et ouvre lui-même la porte. Pour un technicien, c'est aussi un rappel à propos de mon futur métier, parce que c'est précisément le rôle qu'on usurpe : si le support ne demande jamais d'installer un outil par Teams, alors toute demande de ce type devient un signal d'alerte. Je retiens aussi que la défense n'est pas que technique : une procédure connue de tous, comme le rappel sur un numéro officiel, bloque l'attaque à moindre coût.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://www.sophos.com/en-us/blog/chaos-in-teams-vishing" target="_blank" rel="noopener">Sophos — « Chaos in Teams vishing » (campagne STAC4749), observations de février à juin 2026</a><br>
+      <a href="https://www.bleepingcomputer.com/news/security/microsoft-teams-vishing-attacks-lead-to-chaos-ransomware-attacks/" target="_blank" rel="noopener">BleepingComputer — « Microsoft Teams vishing attacks lead to Chaos ransomware attacks », 30 juillet 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

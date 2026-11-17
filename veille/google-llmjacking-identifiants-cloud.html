@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — LLMjacking et identifiants cloud volés — Lucas Lemercier</title>
+<meta name="description" content="Google GTIG et Mandiant observent des attaquants qui utilisent des identifiants cloud et des jetons volés pour consommer des modèles d&#x27;IA aux frais des victimes, jusqu&#x27;à plus de 100 000 dollars par jour.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">IA</span>
+      <span class="tag">Cloud</span>
+      <span class="tag">Identifiants volés</span>
+    </div>
+
+    <h1>LLMjacking : des identifiants cloud volés servent à consommer des modèles d'IA aux frais des victimes</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Observations publiées début novembre 2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>The Hacker News (3 novembre 2026), d'après Google GTIG et Mandiant</strong></div>
+      <div>Criticité : <strong>Élevée (coût financier)</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Le LLMjacking consiste à détourner l'accès d'une organisation à des modèles d'IA : l'attaquant utilise une clé API ou un accès légitime et c'est la victime qui paie la consommation. Google Threat Intelligence Group (GTIG) et Mandiant décrivent ce phénomène dans un rapport relayé par The Hacker News le 3 novembre 2026.
+    </p>
+    <p>
+      Le point de départ n'est pas l'IA mais l'identité : les accès initiaux les plus courants sont des jetons d'identité cloud exposés ou volés (identifiants IAM, clés de comptes de service, jetons d'accès personnels GitHub, jetons de session actifs). Les victimes se trouvent dans la finance, le commerce de détail, la technologie et le transport, en Amérique du Nord, en Amérique du Sud et en Asie-Pacifique.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      C'est le lien entre mon sujet et l'IA, vu comme une conséquence : l'IA est la ressource convoitée, mais c'est le vol d'identité qui donne l'accès. Les identités concernées sont souvent non humaines (comptes de service, clés API, jetons), précisément celles qui sont le moins surveillées dans une organisation.
+    </p>
+
+    <h2>Déroulé décrit par Google</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Étape 1</div>
+        <h4>Accès initial</h4>
+        <p>Identifiants volés ou exposés : clés IAM, clés de comptes de service, jetons GitHub, jetons de session, mais aussi hameçonnage, fuites de code source, environnements mal configurés et clés API publiées sur GitHub.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 2</div>
+        <h4>Escalade et persistance</h4>
+        <p>Création de comptes de service ou de comptes IAM, ajout de clés SSH, abus de droits de création de jetons, extraction de secrets depuis des gestionnaires de secrets.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 3</div>
+        <h4>Monétisation</h4>
+        <p>Proxy de jetons, génération automatisée de contenus, provisionnement de GPU. Pour éviter les limites de débit, la technique « burn and rotate » crée et supprime sans cesse des comptes de service éphémères.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 4</div>
+        <h4>Revente</h4>
+        <p>Des intermédiaires que Google appelle « LLM Mixers » agrègent et revendent l'accès volé. Un service cité, Jet Night, proposerait un forfait « illimité » pour environ 60 dollars par mois (prix et accès non vérifiés).</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Attribué à Google :</strong> plus de 100 000 dollars de frais frauduleux en une seule journée dans certains incidents, et jusqu'à 1 million de dollars cumulés chez certaines organisations avant révocation de l'accès. Un acteur, UNC6993, a compromis une instance cloud via une clé de compte de service mal configurée, créé des clés API supplémentaires et généré plus de 100 000 dollars de frais. <strong>Limites :</strong> les montants proviennent d'incidents décrits sans périmètre ni méthode d'estimation ; l'offre de Jet Night est « alléguée ». Un rapport distinct de Symantec (relais gris pour des outils de code) n'est pas de Google et n'indique aucune preuve de vol de données. Le lien entre la faille CVE-2026-40217 d'un routeur de modèles et des attaques réelles n'est pas établi dans l'article.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Mesures déduites des vecteurs décrits : l'article ne publie pas de recommandations de Google. Remplacer les clés statiques par des identités temporaires et limiter leurs droits (moindre privilège)</li>
+      <li>Scanner les dépôts de code (y compris l'historique GitHub) pour détecter les clés et jetons exposés, et révoquer immédiatement ceux qui fuient</li>
+      <li>Fixer des plafonds de consommation et des alertes de coûts sur les services d'IA et de calcul, pour détecter une hausse anormale rapidement</li>
+      <li>Surveiller la création de comptes de service, de clés API et de clés SSH, ainsi que l'usage de GPU inhabituel</li>
+      <li>Stocker les secrets dans un gestionnaire dédié, avec rotation régulière et accès journalisés</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Administration cloud et gestion des identités (IAM)</span>
+      <span class="tag">Gestion des secrets et clés API</span>
+      <span class="tag">Supervision et alertes de coûts</span>
+      <span class="tag">Sécurisation des dépôts de code</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce qui m'a frappé, c'est que le sujet « IA » de cette actualité est en fait un problème d'identités : sans clé ou jeton volé, il n'y a pas de LLMjacking. J'ai aussi retenu l'aspect financier : une mauvaise gestion d'un secret peut coûter 100 000 dollars par jour, ce qui est un argument concret pour justifier la sécurité auprès d'une direction. Pour mon futur métier, cela revient à surveiller aussi les comptes de service, pas seulement les comptes des utilisateurs. Je note enfin que l'article ne donne pas de recommandations : j'ai donc indiqué dans la fiche que les mesures sont déduites des vecteurs, pas reprises de Google.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://thehackernews.com/2026/11/google-warns-llmjacking-attacks-are.html" target="_blank" rel="noopener">The Hacker News — article sur le LLMjacking, Ravie Lakshmanan, 3 novembre 2026, d'après le rapport de Google GTIG et Mandiant</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

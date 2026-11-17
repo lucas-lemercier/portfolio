@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — McKesson et ShinyHunters — Lucas Lemercier</title>
+<meta name="description" content="McKesson confirme un accès non autorisé à des applications tierces ; ShinyHunters revendique un vishing suivi d&#x27;une prise de contrôle de comptes Okta. Le cas oblige à distinguer faits et revendications.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">SSO / Okta</span>
+      <span class="tag">Vishing</span>
+      <span class="tag">Santé</span>
+    </div>
+
+    <h1>McKesson : un accès confirmé, un scénario « vishing puis Okta » seulement revendiqué</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>21 au 25 août 2026 (fenêtre revendiquée) · détection le 25 août</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>Help Net Security et Malwarebytes (31 août 2026), dépôt de McKesson auprès de la SEC</strong></div>
+      <div>Criticité : <strong>Élevée (périmètre réel inconnu)</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      McKesson, grand distributeur américain de produits de santé, a indiqué dans un dépôt auprès de la SEC avoir détecté le 25 août 2026 un accès non autorisé à « certaines applications tierces » et une exfiltration de données. Les données concernent un sous-ensemble de clients de ses unités Oncology & Multispecialty et Medical-Surgical. L'enquête en est à un stade précoce.
+    </p>
+    <p>
+      Le groupe d'extorsion ShinyHunters, que les journalistes soupçonnent d'être l'auteur, donne une version bien plus détaillée : des appels de vishing auprès d'employés, la prise de contrôle de comptes Okta SSO avec des identifiants volés, puis un passage vers Salesforce et Snowflake. McKesson n'a confirmé aucun de ces éléments. Cette fiche sert donc surtout à apprendre à lire un incident en séparant ce qui est établi de ce qui est affirmé par l'attaquant.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      Si le scénario revendiqué est exact, il illustre un risque propre au SSO : un seul compte d'identité compromis ouvre l'accès à de nombreuses applications d'un coup. C'est la raison pour laquelle la protection du compte SSO et du processus de réinitialisation du MFA est prioritaire. Mais ce scénario reste une hypothèse tant que McKesson ne l'a pas confirmé.
+    </p>
+
+    <h2>Ce qui est établi et ce qui est revendiqué</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Confirmé par McKesson</div>
+        <h4>Accès non autorisé et exfiltration</h4>
+        <p>Accès non autorisé à « certaines applications tierces », exfiltration de « certaines données », sous-ensemble de clients de deux unités, détection le 25 août 2026. Enquête à un stade précoce ; l'entreprise n'a pas déterminé si l'incident est significatif pour ses finances ou ses opérations.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Revendiqué · accès initial</div>
+        <h4>Vishing puis comptes Okta SSO</h4>
+        <p>Selon ShinyHunters, des employés ont été appelés (vishing) et des comptes Okta SSO ont été pris avec des identifiants volés. Non confirmé par McKesson ; OAuth n'est pas mentionné par les sources.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Revendiqué · rebond</div>
+        <h4>Salesforce et Snowflake</h4>
+        <p>Le groupe affirme avoir rebondi vers les environnements Salesforce et Snowflake et extrait environ 1 To de données en quatre jours (du 21 au 25 août). Non confirmé.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Revendiqué · extorsion</div>
+        <h4>Rançon de 55 millions de dollars</h4>
+        <p>Demande de rançon d'environ 55,2 millions de dollars avec un délai de 72 heures, sans réponse connue de McKesson. Non confirmé, et on ignore si l'entreprise a payé.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Confirmé :</strong> une intrusion et une exfiltration limitées à un sous-ensemble de clients de deux unités ; McKesson indique qu'aucune action n'est requise de la part des clients et que des ralentissements de service sont possibles. <strong>Revendiqué, non vérifié :</strong> 284 millions d'enregistrements (environ 1 To), ce qui correspond à des lignes de base de données et non à des patients distincts ; le titre de certains articles parle de « patient records » alors que le texte le précise. Le nombre réel de personnes touchées est inconnu. L'attribution à ShinyHunters est une inférence des journalistes : McKesson ne désigne aucun auteur.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Protéger le compte SSO par un MFA résistant au phishing (clé FIDO2 ou passkey), en priorité pour les administrateurs, le support et les dirigeants</li>
+      <li>Encadrer la réinitialisation du MFA par le support : vérification de l'identité par un autre canal, sans réinitialiser pendant un appel entrant</li>
+      <li>Surveiller les nouvelles inscriptions de méthodes MFA et les accès simultanés à de nombreuses applications depuis un même compte</li>
+      <li>Limiter ce que chaque application SaaS connectée peut lire et exporter, et préparer la révocation des sessions</li>
+      <li>Pour les personnes concernées : changer ses mots de passe, utiliser un MFA basé sur une clé FIDO2 et se méfier des contacts non sollicités se présentant comme McKesson ou un prestataire de santé</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Gestion des identités et du SSO</span>
+      <span class="tag">Sécurisation du support utilisateur</span>
+      <span class="tag">Supervision et détection</span>
+      <span class="tag">Protection des données de santé (RGPD)</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce cas m'a surtout appris à lire une actualité cyber avec méthode. Les titres annoncent 284 millions de dossiers, alors que McKesson ne confirme qu'un accès à des applications tierces. Le détail du vishing et d'Okta vient du groupe attaquant, qui a intérêt à se montrer puissant pour faire pression. Dans ma veille, je préfère donc indiquer clairement ce qui est confirmé et ce qui est revendiqué, plutôt que de présenter une version complète qui n'est peut-être pas vraie. Côté métier, retenir l'idée du SSO : si un seul compte ouvre beaucoup d'applications, il faut le protéger davantage que les autres.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://www.helpnetsecurity.com/2026/08/31/healthcare-company-mckesson-data-breach/" target="_blank" rel="noopener">Help Net Security — « ShinyHunters claims it stole 284 million patient records from McKesson », Sinisa Markovic, 31 août 2026</a><br>
+      <a href="https://www.malwarebytes.com/blog/news/2026/08/mckesson-confirms-cyber-incident-after-shinyhunters-claims-patient-data-theft" target="_blank" rel="noopener">Malwarebytes — « McKesson confirms cyber incident after ShinyHunters claims patient-data theft », Pieter Arntz, 31 août 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

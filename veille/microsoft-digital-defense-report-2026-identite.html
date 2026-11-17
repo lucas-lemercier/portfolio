@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Microsoft Digital Defense Report 2026 — Lucas Lemercier</title>
+<meta name="description" content="Le rapport annuel de Microsoft place l&#x27;identité au centre de la défense : hausse du phishing comme accès initial, accès permanents trop larges et agents IA à traiter comme des identités.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">Rapport annuel</span>
+      <span class="tag">Phishing</span>
+      <span class="tag">IA</span>
+    </div>
+
+    <h1>Microsoft Digital Defense Report 2026 : le phishing progresse comme accès initial, l'identité reste la surface à défendre</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Période juillet 2025 à juin 2026 · rapport du 1er octobre 2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>Microsoft (1er octobre 2026), Infosecurity Magazine (2 octobre), Le Monde Informatique (5 octobre)</strong></div>
+      <div>Criticité : <strong>Information de contexte</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Le 1er octobre 2026, Microsoft a publié son rapport annuel Digital Defense Report. Il s'appuie sur les signaux de sécurité de ses propres produits. Cette fiche ne repose pas sur le rapport complet (PDF), que je n'ai pas consulté, mais sur la page de synthèse de Microsoft et sur deux articles de presse. La page de Microsoft confirme le chiffre de 31 millions de détections de risques d'identité par jour ; les pourcentages sur le phishing, eux, viennent de la presse.
+    </p>
+    <p>
+      Les points qui concernent l'identité : le phishing passerait de 7 % à 23 % des accès initiaux en un an, l'exploitation d'applications exposées sur Internet de 15 % à 24 %, et Microsoft décrit l'identité comme la surface de risque la plus importante. Il recommande le MFA résistant au phishing, la réduction des accès permanents et le traitement des agents IA comme des identités à surveiller.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      Ce rapport sert de cadre d'ensemble à la veille. Il confirme à l'échelle d'un grand éditeur que les attaques passent par les identités (phishing, comptes valides) plus que par la force brute, ce qui correspond aux cas suivis dans les autres fiches (vishing, jetons volés, abus d'OAuth). Il ajoute un sujet qui monte : les agents IA, qui sont des identités non humaines à gouverner comme les autres.
+    </p>
+
+    <h2>Chiffres et constats du rapport (données de Microsoft)</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Accès initial</div>
+        <h4>Phishing : de 7 % à 23 %</h4>
+        <p>Ces chiffres sont des parts d'incidents, pas des volumes. Dans le même temps, l'ingénierie sociale au sens large passerait de 15 % à 7 %, un écart que les articles ne permettent pas d'expliquer sans la méthodologie.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Accès initial</div>
+        <h4>Applications exposées : de 15 % à 24 %</h4>
+        <p>Présentée comme le principal vecteur d'accès initial identifié par Microsoft en 2026.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Phishing</div>
+        <h4>Autres chiffres cités</h4>
+        <p>Selon Le Monde Informatique : 89 à 95 % des pièces jointes de phishing visent à récupérer des identifiants, plus de 145 millions d'attaques par QR code détectées, et 31 millions de détections de risques d'identité par jour en moyenne.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">IA</div>
+        <h4>Des jours aux minutes</h4>
+        <p>Microsoft affirme que l'IA fait passer l'exfiltration, la découverte d'identifiants et le mouvement latéral de « jours » à « minutes ». Aucun chiffre ne l'étaye dans les articles.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>À prendre avec prudence :</strong> les données viennent d'un seul éditeur, dont le point de vue est celui de ses clients et de ses produits. Les articles ne donnent ni la taille de l'échantillon, ni la définition d'un incident, ni la base des pourcentages. L'attribution de la hausse du phishing à l'IA est probable mais non démontrée. Microsoft reconnaît lui-même qu'aucune technique n'est nouvelle : ce sont l'échelle et la rapidité qui changent. Les pourcentages 7 % → 23 % et 15 % → 24 % ne figurent pas sur la page de synthèse de Microsoft : je les cite d'après la presse, sans avoir pu les vérifier dans le PDF. Je n'utilise donc ces chiffres que comme tendances, pas comme mesures précises.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Adopter le MFA résistant au phishing (passkeys, clés FIDO2) en commençant par les comptes à privilèges</li>
+      <li>Réduire les accès permanents : Microsoft parle de « too much standing access, too loosely enforced » (trop d'accès permanents, trop mal contrôlés), un problème ancien sans lien avec l'IA</li>
+      <li>Mettre en place une administration à plusieurs niveaux et un contrôle strict des accès privilégiés</li>
+      <li>Relier les signaux de sécurité, le renseignement sur les menaces et les journaux pour détecter plus vite</li>
+      <li>Traiter les agents IA comme des identités : une identité propre, des droits minimaux et un responsable humain, car la compromission d'un agent hérite de sa confiance entre services</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Gestion des identités et des accès</span>
+      <span class="tag">Administration à niveaux (tiering) dans Active Directory et Entra ID</span>
+      <span class="tag">Supervision et corrélation de journaux</span>
+      <span class="tag">Analyse critique de sources</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce rapport m'a surtout appris à lire des statistiques avec méthode. Le phishing passe de 7 % à 23 %, mais l'ingénierie sociale globale diminue : sans les définitions, je ne peux pas conclure. Je garde de cette lecture que ce sont des tendances d'un éditeur, utiles pour situer mon sujet, mais pas des preuves. Ce que je retiens pour l'administration, c'est l'idée des accès permanents trop larges : un compte à privilèges qui l'est en permanence est une cible de choix. C'est ce qu'on cherche à réduire avec l'administration par niveaux (tiering) dans Active Directory, que je compte relier à mon atelier Windows Server.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://news.microsoft.com/source/emea/2026/10/les-enseignements-du-microsoft-digital-defense-report-2026/?lang=fr" target="_blank" rel="noopener">Microsoft EMEA — « Les enseignements du Microsoft Digital Defense Report 2026 », 1er octobre 2026</a><br>
+      <a href="https://www.infosecurity-magazine.com/news/microsoft-ai-attack-time-minutes/" target="_blank" rel="noopener">Infosecurity Magazine — « Microsoft: AI Cuts Post-Compromise Attack Time to Minutes », James Coker, 2 octobre 2026</a><br>
+      <a href="https://www.lemondeinformatique.fr/actualites/lire-microsoft-pointe-la-montee-en-puissance-des-attaques-assistees-par-l-ia-100829.html" target="_blank" rel="noopener">Le Monde Informatique — article sur le rapport Microsoft Digital Defense Report 2026, Louise Costa, 5 octobre 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

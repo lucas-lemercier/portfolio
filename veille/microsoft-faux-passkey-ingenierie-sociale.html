@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Faux passkeys et ingénierie sociale — Lucas Lemercier</title>
+<meta name="description" content="Microsoft décrit des attaques où un faux « passage aux passkeys » sert de prétexte pour voler une session Entra ID, puis enregistrer une méthode MFA contrôlée par l&#x27;attaquant.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">Passkeys / FIDO2</span>
+      <span class="tag">AiTM</span>
+      <span class="tag">Microsoft Entra ID</span>
+    </div>
+
+    <h1>Quand les passkeys deviennent un prétexte : Microsoft décrit une attaque qui contourne le MFA classique</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Activité observée depuis mai 2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>Blog Microsoft Security, 9 septembre 2026</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Dans un billet du 9 septembre 2026, Microsoft décrit une série d'attaques observées depuis mai 2026. Un appel ou un SMS sur le téléphone personnel de la victime prétend venir du support informatique et évoque une mise à jour urgente des passkeys, du MFA ou du SSO. La victime est redirigée vers un faux portail Microsoft.
+    </p>
+    <p>
+      Le thème des passkeys n'est pas l'objectif : Microsoft écrit que ce récit sert de prétexte crédible. Le faux portail déclenche une attaque de type adversary-in-the-middle (AiTM) ou un flux device code, qui permet de voler la session. L'attaquant enregistre ensuite sa propre méthode MFA pour garder l'accès. Point essentiel : l'article ne décrit aucune faille de FIDO2 ni des passkeys.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      Le cas relie les deux grandes évolutions de la veille : l'adoption des passkeys (et du MFA résistant au phishing) et la capacité des attaquants à contourner les MFA plus faibles. Il montre que ce qui est contourné, c'est le MFA par notification ou code à usage unique, pas la technologie FIDO elle-même. La protection dépend donc surtout des méthodes d'authentification autorisées.
+    </p>
+
+    <h2>Déroulé d'une attaque décrite par Microsoft</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Étape 1</div>
+        <h4>Leurre par appel, SMS ou Teams</h4>
+        <p>Faux support IT sur le téléphone personnel de la victime, ou messages Teams envoyés depuis des comptes déjà compromis. Le prétexte : une mise à jour passkey, MFA ou SSO urgente.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 2</div>
+        <h4>Faux portail</h4>
+        <p>Domaines du type entreprise.domaine-malveillant[.]com, imitant le portail d'authentification, enregistrés et opérationnels en quelques heures.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 3</div>
+        <h4>Vol de session</h4>
+        <p>Attaque AiTM (le faux site relaie la connexion vers le vrai service et capture la session) ou flux device code. Dans un cas, l'AiTM a réussi contre un MFA non résistant au phishing.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 4</div>
+        <h4>Accès et persistance</h4>
+        <p>Connexion depuis un appareil non géré, accès à « Mes applications », SharePoint, OneDrive et Outlook Web pendant environ une heure, puis enregistrement d'une méthode MFA contrôlée par l'attaquant (téléphone, application d'authentification ou jeton OTP).</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Étape 5</div>
+        <h4>Reconnaissance et exfiltration</h4>
+        <p>Énumération des utilisateurs, groupes, rôles et fichiers via Microsoft Graph, puis téléchargements SharePoint/OneDrive et collecte de courriels, en restant sous 1 000 fichiers ou courriels par heure pour passer inaperçu.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Observé par Microsoft :</strong> une première séquence tient en 16 minutes, des sessions persistantes durent environ une heure, et la collecte peut durer de plusieurs heures à plusieurs jours. Microsoft cite deux acteurs, Storm-3121 (lié aux extorsions ShinyHunters et Falcon) et Storm-3032 (issu du groupe BlackFile). Les techniques MITRE ATT&CK incluent T1078.004 (comptes cloud valides) et T1556.006 (modification du MFA). <strong>Limites :</strong> l'article parle de « multiple accounts » sans donner de nombre de victimes ni d'ampleur de la campagne. C'est un billet d'éditeur : il présente aussi les produits Microsoft (Defender XDR, Security Copilot) comme réponse.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Imposer un MFA résistant au phishing (FIDO2, passkeys, Windows Hello for Business) via l'accès conditionnel</li>
+      <li>Bloquer le flux device code et le transfert d'authentification, sauf besoin métier</li>
+      <li>Exiger un appareil géré et conforme pour accéder aux ressources, et protéger l'enregistrement des informations de sécurité</li>
+      <li>Restreindre le consentement des utilisateurs aux applications et surveiller les permissions Graph élevées</li>
+      <li>Vérifier l'identité avant toute réinitialisation du MFA par le support ; en cas de compromission : révoquer les sessions et jetons, supprimer les méthodes MFA et règles de boîte aux lettres ajoutées par l'attaquant</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Gestion des identités et des accès (Entra ID)</span>
+      <span class="tag">Accès conditionnel et MFA</span>
+      <span class="tag">Supervision et chasse aux menaces</span>
+      <span class="tag">Sensibilisation des utilisateurs</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce que je retiens, c'est qu'on peut voir « passkeys » dans une attaque sans que les passkeys soient en cause : elles servent seulement d'excuse pour que la victime coopère. Ça confirme que le maillon faible reste souvent l'humain et les méthodes d'authentification de repli. Pour un administrateur, l'action concrète est de décider quelles méthodes de connexion sont autorisées : tant que le MFA par notification ou code reste possible, l'attaquant peut s'y rabattre. Je note aussi que l'enregistrement d'une nouvelle méthode MFA est un événement à surveiller, comme la création d'un compte.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://www.microsoft.com/en-us/security/blog/2026/09/09/passkey-themed-social-engineering-leads-identity-cloud-compromise/" target="_blank" rel="noopener">Microsoft Security Blog — « Passkey-themed social engineering leads to identity and cloud compromise », 9 septembre 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

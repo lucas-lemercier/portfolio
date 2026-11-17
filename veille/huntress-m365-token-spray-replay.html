@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Campagne M365 token spray et replay — Lucas Lemercier</title>
+<meta name="description" content="Huntress documente une campagne de vol et de rejeu de jetons Microsoft 365 : 79 organisations, faux appareils Entra et MFA ré-enregistré pour rester après un changement de mot de passe.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">Microsoft 365 / Entra ID</span>
+      <span class="tag">Vol de jetons</span>
+      <span class="tag">AiTM</span>
+    </div>
+
+    <h1>Microsoft 365 : une campagne de rejeu de jetons où changer le mot de passe ne suffit pas</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>14 juillet au 22 septembre 2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>Huntress, recherche publiée le 22 octobre 2026</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      L'éditeur de sécurité Huntress a publié le 22 octobre 2026 l'analyse d'une campagne contre des comptes Microsoft 365, observée entre le 14 juillet et le 22 septembre. Les attaquants volent des jetons d'authentification (par relais AiTM, par hameçonnage par code d'appareil ou par ingénierie sociale), puis les rejouent depuis des hébergeurs loués. Dans les deux cas observés, le rejeu intervient 4 à 12 minutes après le vol.
+    </p>
+    <p>
+      Pour rester dans l'environnement, les attaquants enregistrent de faux appareils dans Entra ID et remplacent les méthodes MFA de la victime. Cet accès survit à une réinitialisation de mot de passe : c'est la raison pour laquelle Huntress insiste pour révoquer les sessions en plus de changer le mot de passe.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      C'est l'illustration la plus complète du sujet : vol de session après le MFA, rejeu du jeton, puis persistance par manipulation des identités (faux appareil, nouvelle méthode MFA). Elle rapproche les fiches précédentes (DGFiP, jetons d'infostealers, faux passkeys) dans un même scénario, observé sur un nombre important d'organisations.
+    </p>
+
+    <h2>Les phases de la campagne</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">14 juillet au 3 août</div>
+        <h4>Vague de juillet</h4>
+        <p>Accès à 37 organisations et 37 appareils enregistrés au 3 août. Le 14 juillet, 13 incidents sur 14 impliquent un faux appareil.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Dès le 17 août</div>
+        <h4>Hameçonnage par code d'appareil</h4>
+        <p>Le flux device code est détourné pour obtenir des jetons, puis les méthodes MFA existantes sont effacées. Huntress ne publie pas de total de connexions réussies pour cette phase.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">11 au 15 septembre</div>
+        <h4>Rafale de rejeu</h4>
+        <p>Forte série de connexions depuis une même adresse : 1 052 blocages de l'accès conditionnel, tous dans 4 organisations, preuve que cette protection a stoppé une partie des tentatives.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2 au 22 septembre</div>
+        <h4>Relais et prise de contrôle</h4>
+        <p>Un relais AiTM capture les sessions et une prise de contrôle est confirmée le 22 septembre.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Chiffres de Huntress :</strong> 79 organisations (des incidents liés auxquels Huntress a répondu), au moins 497 connexions réussies (événements de connexion, pas forcément 497 comptes), plus de 200 000 tentatives échouées depuis la plage 193.26.115.0/24, au moins 48 faux appareils Entra, et le MFA remplacé dans 19 organisations. Des règles de boîte de réception cachées ont aussi servi à dissimuler du courrier (un courriel de paie envoyé à un expert-comptable externe). <strong>Limites :</strong> le chiffre de 79 ne couvre peut-être pas toutes les victimes. Le texte contient des incohérences (303 connexions dans 29 organisations contre 232 dans 28 pour une même adresse en septembre), et un titre de presse parle de 97 comptes, une autre unité que les 497 événements. Le vecteur d'accès initial par compte n'est pas établi, et la raison du changement régulier d'adresses non plus.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Révoquer les sessions et réinitialiser le mot de passe : la seule réinitialisation ne suffit pas</li>
+      <li>Rechercher et supprimer, après vérification, les appareils inconnus dans Entra ID (noms de la forme DESKTOP- suivi de huit caractères hexadécimaux) et les méthodes MFA non reconnues (par exemple un libellé « iPhone 13 »)</li>
+      <li>Examiner les règles de boîte de réception suspectes (noms d'un caractère, dossiers inhabituels, mots liés à la paie ou à la banque)</li>
+      <li>Exiger le MFA ou bloquer l'accès pour tous les utilisateurs, applications cloud et types de clients via l'accès conditionnel, et restreindre le flux device code</li>
+      <li>Désactiver le consentement des utilisateurs aux nouvelles applications, et surveiller les requêtes OAuth2:Token venant d'hébergeurs avec un agent « node »</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Administration d'Entra ID et de Microsoft 365</span>
+      <span class="tag">Accès conditionnel et MFA</span>
+      <span class="tag">Réponse à incident et révocation de sessions</span>
+      <span class="tag">Supervision et journalisation</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce qui me parle le plus dans cette étude, c'est la persistance : l'attaquant ajoute un faux appareil et sa propre méthode MFA, donc même si on change le mot de passe, il reste. Cela relie bien ce que j'ai vu dans les autres fiches : la réponse à un compte compromis doit être une procédure complète (révoquer les sessions, vérifier les appareils et les méthodes MFA, contrôler les règles de messagerie), pas seulement un changement de mot de passe. J'ai aussi appris à m'arrêter sur les incohérences d'un rapport, comme les 303 contre 232 connexions, plutôt que de recopier le chiffre le plus impressionnant.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://www.huntress.com/blog/token-replay-spray" target="_blank" rel="noopener">Huntress — « M365 Token Spray and Replay Campaign Compromises Business Email Accounts », Andrea Hatcher, Susannah Matt, Matt Poto, Andrew Schwartz, 22 octobre 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Jetons volés par infostealers — Lucas Lemercier</title>
+<meta name="description" content="Okta analyse un dump de 7 Go de logs d&#x27;infostealers : des jetons de session non expirés, dont certains liés à des services d&#x27;IA, peuvent être rejoués sans MFA.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">Jetons de session</span>
+      <span class="tag">Infostealers</span>
+      <span class="tag">IA</span>
+    </div>
+
+    <h1>Infostealers : des jetons de session rejouables, y compris pour des services d'IA, contournent le MFA</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Dump publié le 2 août 2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>Okta Threat Intelligence (9 septembre 2026), The Hacker News (9 septembre)</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Le 2 août 2026, un lot de logs d'infostealers (7 Go, 5 871 machines infectées dans 162 pays) a été publié gratuitement sur un canal Telegram. Okta Threat Intelligence l'a analysé et publié ses conclusions le 9 septembre. Un infostealer est un logiciel malveillant qui vole sur un poste les mots de passe, les cookies de session et les jetons enregistrés dans les navigateurs et applications.
+    </p>
+    <p>
+      Le point important est qu'un jeton de session volé peut être rejoué : l'attaquant est « effectivement connecté » sans se connecter réellement, puisque l'authentification, MFA compris, a déjà eu lieu avant l'émission du jeton. L'analyse d'Okta montre que ce risque touche aussi les services d'IA (clés API et jetons d'accès à des assistants), qui deviennent des cibles d'identité comme les autres.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      Le cas montre la limite du MFA : il protège le moment de la connexion, pas le jeton émis ensuite. C'est pourquoi la veille suit le vol de sessions et de jetons (infostealers, AiTM) et les défenses associées, comme la durée de vie courte des jetons et leur liaison à l'appareil. Il fait aussi le lien avec l'IA, mais comme conséquence : ce sont des identités d'IA qui sont volées, pas un « piratage par l'IA ».
+    </p>
+
+    <h2>Ce qu'Okta a observé dans le dump</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Collecte</div>
+        <h4>Un dump de 7 Go</h4>
+        <p>5 871 dossiers, chacun correspondant à une machine infectée, répartis dans 162 pays. Analyse faite avec des expressions régulières personnalisées et l'outil open source TruffleHog.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Jetons trouvés</div>
+        <h4>44 791 JWT uniques</h4>
+        <p>Un JWT est un jeton signé qui prouve l'authentification d'un utilisateur. Parmi eux, environ 555 sont jugés « probablement » liés à l'authentification de services d'IA, et 1 843 JWT et JWE (JWT chiffrés) n'étaient pas expirés à la date de publication du dump.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Clés API</div>
+        <h4>24 clés encore valides</h4>
+        <p>Quatre services d'IA sont concernés : Google Gemini, OpenAI, Groq et OpenRouter. Le statut « valide » est signalé par TruffleHog.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Exploitation</div>
+        <h4>Rejeu avec outils anti-détection</h4>
+        <p>Les jetons peuvent être chargés dans des navigateurs anti-détection (Camoufox, SeleniumBase) avec des proxys, ce qui contourne les contrôles de type « voyage impossible ».</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Mesuré par Okta :</strong> le nombre de machines, de pays, de JWT et de jetons non expirés au 2 août 2026 ; 17,7 % des JWT contiennent des données personnelles en clair. <strong>Supposé :</strong> que ces jetons permettraient effectivement un accès. Le texte ne décrit aucun test de rejeu contre les services : la validité est déduite de la date d'expiration, pas démontrée. <strong>Limites déclarées par Okta :</strong> un seul dump, relativement petit, donc non représentatif du marché ; aucune preuve de sessions Okta volées dans ce dump ; le rejeu peut être bloqué par une liste d'adresses IP autorisées ou par la liaison du jeton à l'appareil. Okta est aussi un éditeur de solutions d'identité : certaines recommandations (Identity Threat Protection, Universal Logout) mettent en avant ses propres produits.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Utiliser des flux OAuth 2.0 qui émettent des jetons d'accès de courte durée à partir de jetons de rafraîchissement bien protégés</li>
+      <li>Lier les jetons à l'appareil : Device Bound Session Credentials (DBSC) dans Chrome quand les services le supportent, DPoP pour les jetons OAuth</li>
+      <li>Détecter la réutilisation d'un jeton et pouvoir révoquer rapidement les sessions suspectes (par exemple avec Universal Logout dans l'écosystème Okta)</li>
+      <li>Pour les clés API : fixer des plafonds d'usage, limiter les adresses IP autorisées, éviter les clés en clair et scanner les dépôts avec un outil de détection de secrets</li>
+      <li>Protéger le poste : navigateurs à jour, protection endpoint (EDR) et liste blanche d'applications pour limiter l'installation d'infostealers</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Gestion des identités et des jetons</span>
+      <span class="tag">Sécurisation des postes de travail</span>
+      <span class="tag">Gestion des secrets et clés API</span>
+      <span class="tag">Supervision et détection</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce que je retiens, c'est qu'un MFA, même solide, ne sert à rien si le jeton émis après la connexion est volé : l'attaquant n'a plus rien à contourner. Cela m'a fait comprendre pourquoi la durée de vie des sessions et la révocation comptent autant que le mot de passe. Je trouve aussi utile la prudence d'Okta sur ses propres chiffres : un seul dump, des jetons non expirés mais pas testés. J'ai donc évité d'écrire que « 1 843 comptes ont été piratés », ce qui serait faux. Pour mon métier, cela revient à penser à protéger les postes (les infostealers y naissent) autant que les comptes.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://www.okta.com/blog/threat-intelligence/signing_in_without_actually_signing_in/" target="_blank" rel="noopener">Okta Threat Intelligence — « Signing in without actually signing in », Jeremy Kirk, 9 septembre 2026</a><br>
+      <a href="https://thehackernews.com/2026/09/infostealer-logs-expose-replayable-ai.html" target="_blank" rel="noopener">The Hacker News — « Infostealer Logs Expose Replayable AI Tokens That Can Bypass MFA », Ravie Lakshmanan, 9 septembre 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

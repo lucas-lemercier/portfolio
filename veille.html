@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veille cybersécurité — Lucas Lemercier</title>
+<title>Veille — Sécurité des identités et de l'authentification — Lucas Lemercier</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -26,52 +26,88 @@
 
 <section>
   <div class="wrap">
-    <h2>Veille cybersécurité</h2>
-    <p class="section-intro">Suivi régulier d'actualités cybersécurité à fort impact, avec analyse personnelle et lien vers les compétences SISR concernées. Mise à jour environ toutes les deux semaines.</p>
+    <h2>Veille : sécurité des identités et de l'authentification</h2>
+    <p class="section-intro">Comment les attaquants contournent l'authentification multifacteur et détournent des comptes (hameçonnage, vol de jetons de session, abus d'OAuth, ingénierie sociale du support), et comment s'en protéger (passkeys, accès conditionnel, Entra ID et Active Directory). Chaque fiche sépare les faits confirmés des revendications, puis la relie aux compétences SISR. Mise à jour environ toutes les deux semaines.</p>
 
     <div class="veille-card">
       <div>
-        <div class="meta">Incident de début septembre 2026</div>
-        <h3>Cyberattaque contre le ministère de la Transition écologique</h3>
-        <p>Une faille IDOR exploitée aux côtés d'une API mal configurée paralyse plusieurs portails et expose les données de 22 800 utilisateurs.</p>
+        <div class="meta">Début novembre 2026 · Article du 3 novembre 2026</div>
+        <h3>LLMjacking : des identifiants cloud volés pour consommer de l'IA</h3>
+        <p>Google et Mandiant observent des attaquants qui utilisent des clés et jetons volés pour faire payer leur usage de modèles d'IA aux victimes, jusqu'à plus de 100 000 dollars par jour.</p>
       </div>
-      <a class="link" href="veille/ministere-transition-ecologique-cyberattaque.html">Lire la fiche →</a>
+      <a class="link" href="veille/google-llmjacking-identifiants-cloud.html">Lire la fiche →</a>
     </div>
 
     <div class="veille-card">
       <div>
-        <div class="meta">Incident du 25 août 2026</div>
-        <h3>Cyberattaque Boston Scientific : le cloud épargné grâce à la segmentation</h3>
-        <p>Une cyberattaque paralyse la fabrication mondiale de Boston Scientific, mais son architecture cloud isolée reste protégée.</p>
+        <div class="meta">14 juillet au 22 septembre 2026 · Recherche du 22 octobre 2026</div>
+        <h3>M365 : rejeu de jetons, changer le mot de passe ne suffit pas</h3>
+        <p>Huntress décrit une campagne touchant 79 organisations : jetons volés puis rejoués, faux appareils Entra et MFA remplacé pour persister même après un changement de mot de passe.</p>
       </div>
-      <a class="link" href="veille/boston-scientific-cyberattaque.html">Lire la fiche →</a>
+      <a class="link" href="veille/huntress-m365-token-spray-replay.html">Lire la fiche →</a>
     </div>
 
     <div class="veille-card">
       <div>
-        <div class="meta">Publication du 22 août 2026</div>
-        <h3>Fuite de données du cloud de l'État français</h3>
-        <p>Un cybercriminel publie des milliers de lignes de données issues de cloud.numerique.gouv.fr, la plateforme cloud pilotée par la DINUM.</p>
+        <div class="meta">Rapport du 1er octobre 2026</div>
+        <h3>Microsoft Digital Defense Report 2026 : l'identité au centre</h3>
+        <p>Le phishing passerait de 7 % à 23 % des accès initiaux. Un rapport d'éditeur à lire avec prudence, mais qui confirme que la défense se joue sur les identités.</p>
       </div>
-      <a class="link" href="veille/cloud-numerique-gouv-fr-fuite.html">Lire la fiche →</a>
+      <a class="link" href="veille/microsoft-digital-defense-report-2026-identite.html">Lire la fiche →</a>
     </div>
 
     <div class="veille-card">
       <div>
-        <div class="meta">Incident du 16–27 juillet 2026</div>
-        <h3>Ransomware Fairlife (Coca-Cola) : production américaine à l'arrêt</h3>
-        <p>Un ransomware stoppe toute la production laitière de Fairlife aux États-Unis pendant près de deux semaines.</p>
+        <div class="meta">Dump du 2 août 2026 · Analyse Okta du 9 septembre 2026</div>
+        <h3>Infostealers : des jetons de session rejouables contournent le MFA</h3>
+        <p>Okta analyse un dump de 7 Go : 1 843 jetons non expirés, dont certains liés à des services d'IA. Rejouer un jeton évite le MFA, d'où l'intérêt des jetons courts et liés à l'appareil.</p>
       </div>
-      <a class="link" href="veille/fairlife-coca-cola-ransomware.html">Lire la fiche →</a>
+      <a class="link" href="veille/okta-infostealer-jetons-ia-rejouables.html">Lire la fiche →</a>
     </div>
 
     <div class="veille-card">
       <div>
-        <div class="meta">Incident du 7–10 juillet 2026</div>
-        <h3>Compromission AWS assistée par IA en 72 heures</h3>
-        <p>Un attaquant combine identifiants volés et outils d'IA pour prendre le contrôle d'un environnement cloud complet en trois jours.</p>
+        <div class="meta">Activité depuis mai 2026 · Billet Microsoft du 9 septembre 2026</div>
+        <h3>Quand les passkeys deviennent un prétexte d'attaque</h3>
+        <p>Un faux passage aux passkeys sert à voler une session Entra ID puis à enregistrer une méthode MFA pirate. Microsoft précise que FIDO n'est pas cassé : ce sont les MFA faibles qui sont contournés.</p>
       </div>
-      <a class="link" href="veille/aws-ia-compromission-72h.html">Lire la fiche →</a>
+      <a class="link" href="veille/microsoft-faux-passkey-ingenierie-sociale.html">Lire la fiche →</a>
+    </div>
+
+    <div class="veille-card">
+      <div>
+        <div class="meta">Incident détecté le 25 août 2026 · Articles du 31 août 2026</div>
+        <h3>McKesson : un accès confirmé, un scénario Okta seulement revendiqué</h3>
+        <p>McKesson confirme un accès à des applications tierces. ShinyHunters affirme avoir utilisé le vishing et des comptes Okta : une étude de cas sur la différence entre faits et revendications.</p>
+      </div>
+      <a class="link" href="veille/mckesson-shinyhunters-revendication-okta.html">Lire la fiche →</a>
+    </div>
+
+    <div class="veille-card">
+      <div>
+        <div class="meta">Incidents de mai à août 2026 · Rapport ANSSI du 23 septembre</div>
+        <h3>DGFiP et Éducation nationale : des comptes d'agents compromis</h3>
+        <p>Identifiants volés par des infostealers, MFA absent ou contourné, sessions non coupées : l'ANSSI explique comment la DGFiP a été compromise sans attaque sophistiquée.</p>
+      </div>
+      <a class="link" href="veille/dgfip-education-nationale-comptes-compromis.html">Lire la fiche →</a>
+    </div>
+
+    <div class="veille-card">
+      <div>
+        <div class="meta">Février à juin 2026 · Article du 30 juillet 2026</div>
+        <h3>Teams : de faux support IT déploient le ransomware Chaos</h3>
+        <p>Une campagne contacte des employés via Teams en se faisant passer pour le helpdesk, prend la main avec Quick Assist, puis chiffre les postes en moins de 17 heures dans un cas.</p>
+      </div>
+      <a class="link" href="veille/teams-vishing-ransomware-chaos.html">Lire la fiche →</a>
+    </div>
+
+    <div class="veille-card">
+      <div>
+        <div class="meta">Campagnes de mi-2025 à mi-2026 · Article du 14 juillet 2026</div>
+        <h3>Salesforce : trois chemins d'attaque où l'identité est la cible</h3>
+        <p>Microsoft décrit comment vishing, jetons OAuth volés chez des éditeurs tiers et accès invités mal configurés permettent d'accéder aux données sans casser le MFA.</p>
+      </div>
+      <a class="link" href="veille/microsoft-shinyhunters-salesforce-oauth.html">Lire la fiche →</a>
     </div>
   </div>
 </section>

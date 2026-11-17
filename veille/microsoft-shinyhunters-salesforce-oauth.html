@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — Microsoft, ShinyHunters et Salesforce — Lucas Lemercier</title>
+<meta name="description" content="Microsoft décrit trois chemins d&#x27;attaque contre Salesforce, dont le vishing suivi d&#x27;un consentement OAuth, qui contourne le MFA sans le casser.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">OAuth</span>
+      <span class="tag">Ingénierie sociale</span>
+      <span class="tag">SaaS</span>
+    </div>
+
+    <h1>Salesforce : Microsoft décrit trois chemins d'attaque où l'identité, et non le mot de passe, est la cible</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Campagnes de mi-2025 à mi-2026</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>The Hacker News (14 juillet 2026), d'après Microsoft (13 juillet)</strong></div>
+      <div>Criticité : <strong>Élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      Le 13 juillet 2026, Microsoft a publié une analyse des attaques visant les instances Salesforce de ses clients depuis mi-2025. The Hacker News l'a relayée le lendemain. Le constat central : les attaquants n'ont pas besoin de casser le mot de passe ni le MFA. Ils obtiennent un accès légitime, soit en faisant consentir un employé, soit en volant des jetons déjà autorisés.
+    </p>
+    <p>
+      Trois chemins sont décrits : (1) un appel de vishing qui amène l'employé à autoriser une application connectée malveillante, (2) le vol de jetons OAuth chez un éditeur tiers qui possède déjà un accès aux instances de ses clients, (3) un accès invité mal configuré sur Experience Cloud, qui n'exige aucune identité.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      OAuth est un mécanisme d'autorisation : une fois le consentement donné ou le jeton émis, l'application agit au nom de l'utilisateur sans repasser par le MFA. Le cas montre que protéger le moment de la connexion ne suffit pas, il faut aussi contrôler ce que les identités et les applications autorisées peuvent faire ensuite.
+    </p>
+
+    <h2>Les trois chemins d'attaque</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Chemin 1 · mi-2025</div>
+        <h4>Vishing puis consentement OAuth</h4>
+        <p>Un faux support informatique appelle l'employé et le guide jusqu'à l'écran de consentement de Salesforce pour autoriser une application connectée présentée comme l'outil Data Loader. L'application appelle ensuite l'API avec les droits de l'utilisateur : énumération, extraction des enregistrements CRM, recherche d'identifiants vers d'autres services.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Chemin 2 · août 2025 à juin 2026</div>
+        <h4>Jetons OAuth volés chez un tiers</h4>
+        <p>L'attaquant compromet un éditeur qui détient déjà des accès vers les instances de ses clients et en vole les jetons. Cas cités : Salesloft Drift (août 2025, accès initial remonté à un compte GitHub), Gainsight (novembre 2025, applications retirées par Salesforce après une activité API inhabituelle) et Klue (juin 2026, identifiant hérité d'une intégration de test).</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Chemin 3 · observé par Microsoft</div>
+        <h4>Accès invité trop permissif</h4>
+        <p>Appels non authentifiés au contrôleur GraphQL Aura d'Experience Cloud, avec pagination par curseur pour dépasser la limite de 2 000 enregistrements. Aucun exploit n'est nécessaire : c'est une erreur de configuration des droits du rôle invité.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Confirmé :</strong> Google a confirmé qu'une de ses instances Salesforce a été touchée en juin 2025 (données commerciales publiques) ; Salesforce a retiré les applications Gainsight ; Salesloft a identifié une cause racine liée à GitHub et à l'environnement AWS de Drift. <strong>Estimations d'experts :</strong> au moins 700 organisations potentiellement exposées via Drift (Google), plus de 200 instances Salesforce touchées via Gainsight (GTIG). <strong>Revendiqué, non confirmé :</strong> environ 1 000 organisations selon des auteurs se réclamant de ShinyHunters. Les liens entre ShinyHunters, Icarus et les identifiants UNC ou Storm restent flous : ces noms se recoupent et sont revendiqués de façon opportuniste.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Inventorier les applications connectées, supprimer celles qui ne servent plus et appliquer le moindre privilège à celles qui restent</li>
+      <li>Préparer la révocation et la rotation des jetons dès qu'une intégration se comporte de façon anormale</li>
+      <li>Verrouiller l'accès invité d'Experience Cloud et vérifier ce que le rôle invité peut lire</li>
+      <li>Activer les journaux d'événements Salesforce et les surveiller réellement (Shield Event Monitoring pour une détection proche du temps réel), puis connecter l'instance à Defender for Cloud Apps</li>
+      <li>Contre le vishing : raccrocher et rappeler le support par un canal connu, ne jamais autoriser une application à la demande d'un appelant</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Gestion des identités et des accès</span>
+      <span class="tag">Sécurisation des services SaaS</span>
+      <span class="tag">Supervision et journalisation</span>
+      <span class="tag">Sensibilisation des utilisateurs</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce qui m'a marqué, c'est que personne n'a cassé le MFA : l'employé a cliqué lui-même sur « Autoriser ». Ça m'a fait comprendre qu'un compte peut être protégé à la connexion et rester exposé à cause des applications qu'on lui laisse connecter. Pour un administrateur, cela veut dire qu'il faut tenir à jour la liste des applications autorisées, comme on tient une liste des comptes et des droits dans Active Directory. J'ai aussi retenu la prudence sur les chiffres : le « 1 000 organisations » vient du groupe d'attaquants, alors que les 700 et 200 viennent d'estimations de Google.
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://thehackernews.com/2026/07/microsoft-maps-year-long-shinyhunters.html" target="_blank" rel="noopener">The Hacker News — « Microsoft Maps Three Salesforce Attack Paths Tied to a Year of ShinyHunters Activity », 14 juillet 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

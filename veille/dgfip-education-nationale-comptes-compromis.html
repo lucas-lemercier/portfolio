@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille — DGFiP et Éducation nationale — Lucas Lemercier</title>
+<meta name="description" content="Des identifiants d&#x27;agents volés, un MFA absent ou contourné et des sessions non coupées : l&#x27;ANSSI détaille comment la DGFiP a été compromise sans attaque sophistiquée.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Lucas <span>Lemercier</span></a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../veille.html" aria-current="page">Veille</a></li>
+        <li><a href="../parcours.html">Parcours BTS</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="wrap veille-article">
+
+    <div class="tags">
+      <span class="tag">Sécurité des identités</span>
+      <span class="tag">Infostealers</span>
+      <span class="tag">MFA</span>
+      <span class="tag">Secteur public</span>
+    </div>
+
+    <h1>DGFiP et Éducation nationale : des comptes d'agents compromis, sans attaque sophistiquée</h1>
+
+    <div class="veille-meta">
+      <div>Événement : <strong>Mai à août 2026 · rapport de l'ANSSI du 23 septembre</strong></div>
+      <div>Rédaction : <strong>5 novembre 2026</strong></div>
+      <div>Source : <strong>IT-Connect (19 août et 30 septembre 2026), Next.ink (30 septembre), rapport ANSSI</strong></div>
+      <div>Criticité : <strong>Très élevée</strong></div>
+    </div>
+
+    <h2>Résumé</h2>
+    <p>
+      À la mi-août 2026, la DGFiP a reconnu des accès illégitimes à des données de 678 000 personnes. Son communiqué du 14 août parle d'« usurpations d'identifiants d'un agent de la DGFiP et d'un tiers habilité ». Au même moment, l'Éducation nationale confirmait une intrusion dans la nuit du 25 juillet via un compte professionnel compromis, et le pirate « ZeroBytes » revendiquait des volumes de données considérables.
+    </p>
+    <p>
+      Le 23 septembre, un rapport d'incident de l'ANSSI, relayé le 30 septembre, a précisé le mécanisme. Sa conclusion centrale : « La compromission des SI de la DGFIP n'est pas la conséquence d'une attaque sophistiquée ». Elle repose sur des identifiants d'agents probablement volés par des infostealers sur des appareils non administrés, l'absence d'authentification multifacteur sur certains portails et des sessions qui n'ont pas été coupées après un changement de mot de passe.
+    </p>
+
+    <h2>Lien avec le sujet de veille</h2>
+    <p>
+      C'est un cas concret de ce que la veille suit : le vol d'identités par infostealers, un MFA absent ou contourné, et la gestion des sessions après un incident. Il montre aussi que la faiblesse ne vient pas d'une technique avancée, mais de l'hygiène des identités : où les comptes sont utilisés, avec quel facteur et pendant combien de temps une session reste valide.
+    </p>
+
+    <h2>Chronologie reconstituée</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">Mai à juin 2026</div>
+        <h4>Comptes d'agents compromis</h4>
+        <p>Plusieurs dizaines d'identifiants d'agents, probablement volés par des infostealers sur des appareils non administrés par la DGFiP (prestataires ou appareils personnels). Un compte compromis le 16 mai n'est identifié que le 3 juin et son mot de passe n'est changé que le 12 juin.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">22 au 25 juin</div>
+        <h4>Exfiltration malgré la réinitialisation</h4>
+        <p>Environ 11 Go sont extraits via le portail ADER, qui n'était pas supervisé par le SOC. Le mot de passe est réinitialisé le 24 juin, mais la session ouverte n'est pas coupée : l'extraction continue jusqu'au 25 juin.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">25 juillet</div>
+        <h4>Éducation nationale</h4>
+        <p>Intrusion dans la nuit du 25 juillet via un compte professionnel compromis (communiqué du 31 juillet). Le 17 août, ZeroBytes revendique 43 Go de données, non vérifiées. L'ANSSI indique que des infrastructures compromises de l'Éducation nationale ont servi de point de passage vers les portails de la DGFiP.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">27 juillet au 8 août</div>
+        <h4>Cadastre et contournement du second facteur</h4>
+        <p>Le poste compromis d'un géomètre-expert (cabinet privé) permet de contourner le second facteur par e-mail du portail APEX et d'exfiltrer des données cadastrales.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">12 au 14 août</div>
+        <h4>Revendication et aveu</h4>
+        <p>ZeroBytes revendique le vol le 12 août, soit environ sept semaines après la première exfiltration. La DGFiP ferme ADER le 13 août, annonce 678 000 personnes concernées le 14 août et ferme le PIGP le 18 août.</p>
+      </div>
+    </div>
+
+    <h2>Impact</h2>
+    <div class="note-box">
+      <strong>Confirmé par l'État :</strong> 678 000 personnes concernées (particuliers et professionnels), avec identifiant fiscal, état civil, coordonnées et situation fiscale ; mots de passe et espaces Finances publiques non compromis. <strong>Constats de l'ANSSI :</strong> jusqu'à 22 comptes internes et jusqu'à 7 comptes externes compromis, volumes de 11 Go (22 au 25 juin) et 3 Go (21 au 23 juillet) qui auraient dû déclencher des alertes, et ses propres sondes n'ont rien détecté sur le moment. <strong>Revendiqué, non vérifié :</strong> les 346 millions de lignes et les millions d'élèves annoncés par ZeroBytes pour l'Éducation nationale. Un nombre de lignes ne correspond pas à un nombre de victimes. À noter aussi un écart non expliqué : 678 000 personnes au total, alors que la répartition citée (353 000 particuliers et 252 000 professionnels) représente environ 605 000.
+    </div>
+
+    <h2>Mesures de protection recommandées</h2>
+    <ul>
+      <li>Imposer le MFA sur toutes les applications, avec un second facteur résistant à la compromission du premier (clé physique ou application d'authentification, plutôt que l'e-mail), recommandation de l'ANSSI ; la DGFiP annonce une double authentification généralisée à tous les agents d'ici fin 2026</li>
+      <li>Révoquer toutes les sessions actives à chaque réinitialisation de mot de passe</li>
+      <li>Proscrire les appareils personnels, durcir les postes (mises à jour mensuelles, EDR, VPN permanent) et restreindre les applications internes aux postes administrés</li>
+      <li>Intégrer toutes les applications dans le SIEM et poser des quotas de requêtes, avec blocage selon la géolocalisation et la réputation des adresses IP</li>
+      <li>Limiter chaque compte au strict nécessaire (moindre privilège) et cloisonner les flux entre ministères sur le RIE</li>
+    </ul>
+
+    <h2>Lien avec les compétences SISR</h2>
+    <div class="tags">
+      <span class="tag">Gestion des identités et des accès (AD, MFA)</span>
+      <span class="tag">Supervision et corrélation de journaux (SIEM)</span>
+      <span class="tag">Sécurisation des postes et politique BYOD</span>
+      <span class="tag">Segmentation et filtrage réseau</span>
+      <span class="tag">Réponse à incident</span>
+    </div>
+
+    <h2>Mon analyse</h2>
+    <p class="analyse-perso">
+      Ce qui m'a le plus surpris, c'est le contraste entre le communiqué de Bercy, qui évoquait une attaque difficile à détecter, et l'ANSSI, qui dit qu'il n'y avait rien de sophistiqué. Le détail qui me parle le plus pour mon métier, c'est la réinitialisation du mot de passe qui n'a pas coupé la session : on pense avoir réagi, alors que l'attaquant continue. Dans un annuaire comme Active Directory ou Entra ID, cela revient à se demander ce qu'on fait des sessions et des jetons déjà émis quand on réinitialise un compte. Je retiens aussi de séparer ce qui est confirmé (678 000 personnes, rapport de l'ANSSI) de ce qui est revendiqué (les volumes de ZeroBytes).
+    </p>
+
+    <div class="source-line">
+      Sources :<br>
+      <a href="https://www.it-connect.fr/fuites-donnees-etat-francais-dgfip-education-nationale/" target="_blank" rel="noopener">IT-Connect — « DGFiP, cadastre, Éducation nationale : l'État français enchaîne les fuites de données », Florian Burnel, 19 août 2026</a><br>
+      <a href="https://www.it-connect.fr/rapport-anssi-cyberattaque-dgfip/" target="_blank" rel="noopener">IT-Connect — « Cyberattaque DGFiP de l'été 2026 : ce que révèle le rapport de l'ANSSI », Florian Burnel, 30 septembre 2026</a><br>
+      <a href="https://next.ink/259041/piratage-de-la-dgfip-pas-dattaque-sophistiquee-mais-une-serie-de-defaillances-techniques/" target="_blank" rel="noopener">Next.ink — « Piratage de la DGFiP : pas d'attaque sophistiquée, mais une série de défaillances techniques », Sébastien Gavois, 30 septembre 2026</a>
+    </div>
+
+    <a class="retour-veille" href="../veille.html">← Retour à la veille</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lucas Lemercier</span>
+    <span>
+      <a href="mailto:lucas.lemercier07@gmail.com">lucas.lemercier07@gmail.com</a> ·
+      <a href="https://github.com/lucas-lemercier">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/lucas-lemercier07">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
